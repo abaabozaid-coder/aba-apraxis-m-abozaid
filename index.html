@@ -171,8 +171,7 @@ tailwind.config = { theme: { extend: { colors: { brand: { 50:'#eff8f7',100:'#d5e
 </main>
 
 <footer class="bg-brand-900/95 text-brand-100 text-center text-sm py-6 border-t border-white/10 px-4">
-  © <span id="yr"></span> Mohamed Farag Abo Zaid | ABA Praxis · <span data-i18n="footer"></span>
-  <button id="adminOpen" class="ms-2 text-brand-100/60 hover:text-white" aria-label="Admin" title="Admin"><i class="fa-solid fa-gear"></i></button>
+  <span id="adminOpen">©</span> <span id="yr"></span> Mohamed Farag Abo Zaid | ABA Praxis · <span data-i18n="footer"></span>
 </footer>
 
 <a data-wa target="_blank" rel="noopener" aria-label="WhatsApp" class="fixed bottom-5 z-40 w-14 h-14 rounded-full bg-green-600 text-white text-3xl flex items-center justify-center shadow-xl hover:bg-green-700" id="waFloat"><i class="fa-brands fa-whatsapp"></i></a>
@@ -779,7 +778,7 @@ $('#yr').textContent = new Date().getFullYear();
 (function(){
   const LS = 'abaDraft', PWK = 'abaAdminPw';
   const arrs = { courses, articles, gallery, services, categories };
-  const CFG_KEYS = ['email','whatsappNumber','prices','bank','wallets','social','sections'];
+  const CFG_KEYS = ['email','whatsappNumber','prices','bank','wallets','social','sections','adminHash'];
   CONFIG.sections = CONFIG.sections || {};
   const GHD = { owner:'abaabozaid-coder', repo:'aba-apraxis-m-abozaid', branch:'main' };
   const gh = () => { try { return Object.assign({}, GHD, JSON.parse(lsGet('abaGh') || '{}')); } catch(e){ return Object.assign({}, GHD); } };
@@ -811,6 +810,10 @@ $('#yr').textContent = new Date().getFullYear();
     catch(e){ let h=5381; for (const ch of 'aba|'+s) h=((h<<5)+h+ch.charCodeAt(0))|0; return 'x'+h; }
   }
   async function unlock(){
+    if (CONFIG.adminHash){   // panel is locked to the owner's passcode in every browser
+      const q = prompt(T('كلمة مرور لوحة التحكم:','Admin passcode:'));
+      return !!q && (await sha(q)) === CONFIG.adminHash;
+    }
     const stored = lsGet(PWK);
     if (!stored){
       const p = prompt(T('أنشئ كلمة مرور للوحة التحكم (6 أحرف على الأقل). تُحفظ في هذا المتصفح فقط:','Create an admin passcode (min 6 chars). Stored in this browser only:'));
@@ -930,6 +933,9 @@ $('#yr').textContent = new Date().getFullYear();
         <div><button id="adPublish2" class="btn btn-g"><i class="fa-brands fa-github me-1"></i>${T('نشر الآن','Publish now')}</button></div><p id="adGhMsg" class="text-sm"></p></div>
       <button id="adExport" class="btn btn-p"><i class="fa-solid fa-download me-1"></i>${T('تصدير content.json','Export content.json')}</button>
       <label class="text-sm">${T('استيراد ملف content.json','Import a content.json file')}<input id="adImport" type="file" accept="application/json" class="block mt-1"></label>
+      <div class="p-4 rounded-xl border bg-white grid gap-2"><b>${T('قفل اللوحة بكلمة مرورك في كل المتصفحات','Lock the panel to your passcode in every browser')}</b>
+        <p class="text-xs text-slate-600">${T('بعد القفل لا يستطيع أحد فتح اللوحة دون كلمة مرورك، ولو عرف طريقة فتحها. اضغط القفل ثم «نشر».','After locking, nobody can open the panel without your passcode, even if they know how to open it. Press Lock, then Publish.')}</p>
+        <div><button id="adLock" class="btn btn-o"><i class="fa-solid fa-lock me-1"></i>${T('قفل بكلمة مروري الحالية','Lock with my current passcode')}</button></div></div>
       <button id="adReset" class="btn bg-red-600 text-white">${T('مسح المسودة والعودة للمحتوى المنشور','Discard draft and return to published content')}</button>
       <button id="adPw" class="btn btn-o">${T('تغيير كلمة المرور','Change passcode')}</button></div>`;
   }
@@ -983,6 +989,7 @@ $('#yr').textContent = new Date().getFullYear();
         if (b.dataset.addwallet!==undefined){ CONFIG.wallets.push({name:'',number:''}); save(); render(); return; }
         if (b.dataset.del){ const [n,i] = b.dataset.del.split(':'); if (confirm(T('حذف هذا العنصر؟','Delete this item?'))){ arrs[n].splice(+i,1); save(); render(); } return; }
         if (b.dataset.mv){ const [n,i,d] = b.dataset.mv.split(':'); const a = arrs[n], from=+i, to=from+(+d); if (to>=0 && to<a.length){ [a[from],a[to]] = [a[to],a[from]]; save(); render(); } return; }
+        if (b.id==='adLock'){ const h = lsGet(PWK); if (!h) return alert('Set a passcode first'); CONFIG.adminHash = h; save(); alert(T('تم القفل. اضغط «نشر» ليسري على كل الزوار.','Locked. Press Publish so it applies to all visitors.')); return; }
         if (b.id==='adPublish' || b.id==='adPublish2'){ publish(); return; }
         if (b.id==='adExport'){ const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(snapshot(),null,2)],{type:'application/json'})); a.download='content.json'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); return; }
         if (b.id==='adReset'){ if (confirm(T('مسح المسودة؟','Discard the draft?'))){ try{localStorage.removeItem(LS);}catch(e){} location.reload(); } return; }
@@ -992,7 +999,10 @@ $('#yr').textContent = new Date().getFullYear();
     render(); ov.classList.remove('hidden'); document.body.style.overflow = 'hidden';
   }
   async function tryOpen(){ if (await unlock()) open(); else if (location.hash==='#admin') history.replaceState(null,'',location.pathname+location.search); }
-  $('#adminOpen').onclick = tryOpen;
+  // secret entry: 5 quick taps on the © sign, Ctrl+Alt+A, or the address ending in #admin
+  let taps = 0, tapTimer;
+  $('#adminOpen').addEventListener('click', () => { taps++; clearTimeout(tapTimer); tapTimer = setTimeout(() => taps = 0, 2500); if (taps >= 5){ taps = 0; tryOpen(); } });
+  document.addEventListener('keydown', e => { if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'a') tryOpen(); });
   window.addEventListener('hashchange', () => { if (location.hash==='#admin') tryOpen(); });
 
   // ---- start-up: published content.json, then this browser's draft, then render ----
