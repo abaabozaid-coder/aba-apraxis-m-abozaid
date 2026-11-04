@@ -189,6 +189,7 @@ tailwind.config = { theme: { extend: { colors: { brand: { 50:'#eff8f7',100:'#d5e
    1) SITE SETTINGS — edit these
    ===================================================================== */
 const CONFIG = {
+  web3formsKey: "",                        // free key from web3forms.com (sent to your email) — enables reliable automatic sending
   email: "abaabozaid@gmail.com",           // receives bookings, assessment requests, contact messages
   whatsappNumber: "201222661073",          // international format, no +
   // Prices per service id and currency. null = "contact for price".
@@ -297,7 +298,7 @@ const i18n = {
     f_name:"الاسم", f_email:"البريد الإلكتروني", f_msg:"رسالتك", f_send:"إرسال",
     contact_note:"أوافق على إرسال بياناتي عبر خدمة FormSubmit إلى بريد المنصة لأغراض التواصل فقط.",
     read_more:"اقرأ المقال", watch_soon:"سيُضاف الفيديو قريباً", pdf:"تحميل PDF", pdf_soon:"المرفق قريباً",
-    share:"مشاركة واتساب", sent:"تم إرسال رسالتك. شكراً!", send_fail:"تعذّر الإرسال الآلي. أرسلها بإحدى الطريقتين:", open_gmail:"افتح Gmail", send_wa:"أرسل عبر واتساب", co_done2:"تم إرسال الحجز. اضغط الزر لتأكيد الموعد عبر واتساب.",
+    share:"مشاركة واتساب", sent:"تم إرسال رسالتك. شكراً!", send_fail:"تعذّر الإرسال الآلي. أرسلها بإحدى الطريقتين:", send_manual:"اختر طريقة الإرسال (الرسالة جاهزة):", open_gmail:"افتح Gmail", send_wa:"أرسل عبر واتساب", co_done2:"تم إرسال الحجز. اضغط الزر لتأكيد الموعد عبر واتساب.",
     footer:"المحتوى توعوي ولا يغني عن التقييم والتشخيص المتخصص.",
     wa_default:"مرحباً أستاذ محمد، أود الاستفسار عن خدمات ABA Praxis",
     wa_ctx:{ home:"مرحباً أستاذ محمد، أود الاستفسار عن خدماتكم.", courses:"مرحباً أستاذ محمد، لدي سؤال عن الدورات المسجلة.", articles:"مرحباً أستاذ محمد، لدي استفسار حول أحد المقالات.", toolkit:"مرحباً أستاذ محمد، أود الاستفسار عن أدوات جمع البيانات.", assessment:"مرحباً أستاذ محمد، أرغب في حجز تقييم VB-MAPP / ABLLS-R وقد اطلعت على الأدوات.", services:"مرحباً أستاذ محمد، أرغب في حجز خدمة مدفوعة وقد اطلعت على تفاصيل التحويل.", contact:"مرحباً أستاذ محمد، أود التواصل معكم." },
@@ -334,7 +335,7 @@ const i18n = {
     f_name:"Name", f_email:"Email", f_msg:"Your message", f_send:"Send",
     contact_note:"I agree to my data being sent through FormSubmit to the platform's email for contact purposes only.",
     read_more:"Read article", watch_soon:"Video coming soon", pdf:"Download PDF", pdf_soon:"Handout coming soon",
-    share:"Share on WhatsApp", sent:"Your message was sent. Thank you!", send_fail:"Automatic sending failed. Send it another way:", open_gmail:"Open Gmail", send_wa:"Send via WhatsApp", co_done2:"Booking sent. Tap the button to confirm the appointment on WhatsApp.",
+    share:"Share on WhatsApp", sent:"Your message was sent. Thank you!", send_fail:"Automatic sending failed. Send it another way:", send_manual:"Choose how to send (message is ready):", open_gmail:"Open Gmail", send_wa:"Send via WhatsApp", co_done2:"Booking sent. Tap the button to confirm the appointment on WhatsApp.",
     footer:"Educational content only; it does not replace professional assessment or diagnosis.",
     wa_default:"Hello Mohamed, I'd like to ask about ABA Praxis services",
     wa_ctx:{ home:"Hello Mohamed, I'd like to ask about your services.", courses:"Hello Mohamed, I have a question about the recorded courses.", articles:"Hello Mohamed, I have a question about one of the articles.", toolkit:"Hello Mohamed, I'd like to ask about the data-collection tools.", assessment:"Hello Mohamed, I'd like to book a VB-MAPP / ABLLS-R assessment; I've reviewed the tools.", services:"Hello Mohamed, I'd like to book a paid service and have reviewed the transfer details.", contact:"Hello Mohamed, I'd like to get in touch." },
@@ -704,8 +705,19 @@ function openCheckout(id){
   };
 }
 const gmailLink = (s,b) => `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONFIG.email)}&su=${encodeURIComponent(s)}&body=${encodeURIComponent(b)}`;
-const fbHtml = (s,b) => `${esc(t("send_fail"))} <a class="underline font-bold" target="_blank" rel="noopener" href="${gmailLink(s,b)}">${esc(t("open_gmail"))}</a> · <a class="underline font-bold" target="_blank" rel="noopener" href="${waLink(s+"\n"+b)}">${esc(t("send_wa"))}</a>`;
-async function deliver(formData, plainText, subject){          // FormSubmit (no backend) with mailto fallback
+const AUTO = () => !!CONFIG.web3formsKey || CONFIG.useFormSubmit === true;
+const fbHtml = (s,b) => `${esc(t(AUTO() ? "send_fail" : "send_manual"))} <a class="underline font-bold" target="_blank" rel="noopener" href="${gmailLink(s,b)}">${esc(t("open_gmail"))}</a> · <a class="underline font-bold" target="_blank" rel="noopener" href="${waLink(s+"\n"+b)}">${esc(t("send_wa"))}</a>`;
+async function deliver(formData, plainText, subject){
+  if (CONFIG.web3formsKey){
+    try {
+      const obj = { access_key: CONFIG.web3formsKey, subject: subject, from_name: "ABA Praxis" };
+      formData.forEach((v,k) => { if (typeof v === "string" && k.charAt(0) !== "_") obj[k] = v; });
+      const r = await fetch("https://api.web3forms.com/submit", { method:"POST", headers:{ "Content-Type":"application/json", Accept:"application/json" }, body: JSON.stringify(obj) });
+      const j = await r.json(); if (j && j.success) return true;
+    } catch(err){}
+    return false;
+  }          // FormSubmit (no backend) with mailto fallback
+  if (CONFIG.useFormSubmit !== true) return false;   // no automatic service configured -> caller shows WhatsApp / Gmail buttons
   try {
     const r = await fetch('https://formsubmit.co/ajax/'+CONFIG.email, { method:'POST', body:formData, headers:{Accept:'application/json'} });
     const j = await r.json(); if (r.ok && (j.success===true || j.success==='true')) return true;
@@ -783,7 +795,7 @@ $('#yr').textContent = new Date().getFullYear();
 (function(){
   const LS = 'abaDraft', PWK = 'abaAdminPw';
   const arrs = { courses, articles, gallery, services, categories };
-  const CFG_KEYS = ['email','whatsappNumber','prices','bank','wallets','social','sections','adminHash'];
+  const CFG_KEYS = ['email','web3formsKey','whatsappNumber','prices','bank','wallets','social','sections','adminHash'];
   CONFIG.sections = CONFIG.sections || {};
   const GHD = { owner:'abaabozaid-coder', repo:'aba-apraxis-m-abozaid', branch:'main' };
   const gh = () => { try { return Object.assign({}, GHD, JSON.parse(lsGet('abaGh') || '{}')); } catch(e){ return Object.assign({}, GHD); } };
@@ -884,7 +896,7 @@ $('#yr').textContent = new Date().getFullYear();
   const field = (label, path, extra='') => `<label class="text-xs block">${label}<input ${inp} data-path="${attr(path)}" value="${attr(val(CONFIG,path)??'')}" ${extra}></label>`;
 
   function tabSettings(){
-    let h = `<div class="grid sm:grid-cols-2 gap-3">${field(T('رقم واتساب (دولي بدون +)','WhatsApp number (intl, no +)'),'whatsappNumber','dir="ltr"')}${field(T('بريد استقبال الحجوزات والرسائل','Email that receives bookings/messages'),'email','dir="ltr"')}</div>`;
+    let h = `<div class="grid sm:grid-cols-2 gap-3">${field(T('رقم واتساب (دولي بدون +)','WhatsApp number (intl, no +)'),'whatsappNumber','dir="ltr"')}${field(T('بريد استقبال الحجوزات والرسائل','Email that receives bookings/messages'),'email','dir="ltr"')}${field(T('مفتاح Web3Forms (للإرسال الآلي)','Web3Forms key (automatic sending)'),'web3formsKey','dir="ltr"')}</div>`;
     h += `<h4 class="font-bold mt-5">${T('بيانات التحويل البنكي','Bank transfer details')}</h4><div class="grid sm:grid-cols-2 gap-3 mt-2">${['holder','bankName','iban','account','swift'].map(k=>field(k,'bank.'+k,'dir="auto"')).join('')}</div>`;
     h += `<h4 class="font-bold mt-5">${T('المحافظ الإلكترونية','E-wallets')}</h4><div class="grid gap-2 mt-2">${CONFIG.wallets.map((w,i)=>`<div class="grid grid-cols-2 gap-2">${field(T('الاسم','Name'),`wallets.${i}.name`)}${field(T('الرقم','Number'),`wallets.${i}.number`,'dir="ltr"')}</div>`).join('')}</div><button data-addwallet class="btn btn-o !py-1 mt-2 text-sm">+ ${T('محفظة','Wallet')}</button>`;
     h += `<h4 class="font-bold mt-5">${T('روابط التواصل الاجتماعي','Social links')}</h4><div class="grid sm:grid-cols-2 gap-3 mt-2">${Object.keys(CONFIG.social).map(k=>field(k,'social.'+k,'dir="ltr" placeholder="https://..."')).join('')}</div>`;
