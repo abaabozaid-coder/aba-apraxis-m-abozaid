@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>محمد فرج أبوزيد | Mohamed Farag Abo Zaid ABA Praxis</title>
+<meta name="description" content="منصة محمد فرج أبوزيد لتحليل السلوك التطبيقي (ABA) والتربية الخاصة والنطق واللغة: دورات ومقالات مجانية، أدوات تقييم، وخدمات تقييم وإشراف إكلينيكي. Free ABA, special education and speech-language resources plus assessment and clinical supervision services.">
+<meta name="keywords" content="محمد فرج أبوزيد, تحليل السلوك التطبيقي, ABA, VB-MAPP, ABLLS-R, التوحد, التلعثم, النطق واللغة, إشراف إكلينيكي, Mohamed Farag Abo Zaid, ABA Praxis, autism, stuttering, clinical supervision">
+<meta name="author" content="Mohamed Farag Abo Zaid">
+<meta property="og:title" content="Mohamed Farag Abo Zaid | ABA Praxis">
+<meta property="og:description" content="تحليل السلوك التطبيقي، تقييم، وإشراف إكلينيكي · ABA, assessment & clinical supervision">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Mohamed Farag Abo Zaid","alternateName":"محمد فرج أبوزيد","jobTitle":"Applied Behavior Analyst & Clinical Supervisor","email":"abaabozaid@gmail.com","brand":"ABA Praxis"}
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2321867a'/%3E%3Ctext x='32' y='42' font-size='30' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'%3EABA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: { colors: { brand: { 50:'#eff8f7',100:'#d5eeeb',500:'#2a9d8f',600:'#21867a',700:'#1b6b62',900:'#12403b' }, warm:'#f4a261' } } } }
+</script>
+<style>
+  body{font-family:'Cairo',sans-serif}
+  html[lang="en"] body{font-family:'Inter',sans-serif}
+  html{scroll-behavior:smooth}
+  section[id]{scroll-margin-top:4.5rem}
+  .card{transition:transform .2s, box-shadow .2s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 10px 25px -10px rgba(18,64,59,.25)}
+  .modal-bg{background:rgba(10,30,28,.6)}
+  .inp{border:1px solid #cbd5e1;border-radius:.6rem;padding:.45rem .7rem;width:100%;background:#fff}
+  .inp:focus{outline:2px solid #2a9d8f}
+  .btn{display:inline-block;padding:.6rem 1.1rem;border-radius:.75rem;font-weight:700}
+  .btn-p{background:#21867a;color:#fff}.btn-p:hover{background:#1b6b62}
+  .btn-o{border:1px solid #2a9d8f;color:#1b6b62;background:#fff}.btn-o:hover{background:#eff8f7}
+  .btn-g{background:#16a34a;color:#fff}.btn-g:hover{background:#15803d}
+  .tab-on{background:#21867a;color:#fff;border-color:#21867a}
+  .note{font-size:.8rem;background:#fff7ed;border:1px solid #fed7aa;border-radius:.6rem;padding:.6rem .8rem;color:#7c2d12}
+  .tbl td,.tbl th{padding:.3rem .4rem;border-bottom:1px solid #e2e8f0;font-size:.85rem}
+  .tbl input{text-align:center;width:4rem}
+</style>
+</head>
+<body class="bg-brand-50/40 text-slate-800 antialiased">
+
+<!-- ================= NAVBAR ================= -->
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-brand-100">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+    <a href="#home" class="font-extrabold text-brand-700 text-xs sm:text-base leading-tight">Mohamed Farag Abo Zaid <span class="text-warm">|</span> ABA Praxis</a>
+    <nav class="hidden lg:flex items-center gap-4 text-sm font-semibold text-slate-600">
+      <a href="#home" data-i18n="nav_home" class="hover:text-brand-600"></a>
+      <a href="#courses" data-i18n="nav_courses" class="hover:text-brand-600"></a>
+      <a href="#articles" data-i18n="nav_articles" class="hover:text-brand-600"></a>
+      <a href="#toolkit" data-i18n="nav_toolkit" class="hover:text-brand-600"></a>
+      <a href="#assessment" data-i18n="nav_assess" class="hover:text-brand-600"></a>
+      <a href="#services" data-i18n="nav_services" class="hover:text-brand-600"></a>
+      <a href="#contact" data-i18n="nav_contact" class="hover:text-brand-600"></a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button id="langBtn" class="px-3 py-1.5 rounded-full border border-brand-500 text-brand-700 text-sm font-bold hover:bg-brand-50" aria-label="Switch language"></button>
+      <a data-wa class="hidden sm:inline-flex px-3 py-1.5 rounded-full bg-green-600 text-white text-sm font-bold hover:bg-green-700" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp me-1"></i><span data-i18n="nav_wa"></span></a>
+      <button id="menuBtn" class="lg:hidden p-2 text-brand-700" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-brand-100 bg-white px-4 py-3 flex flex-col gap-3 text-sm font-semibold">
+    <a href="#home" data-i18n="nav_home"></a><a href="#courses" data-i18n="nav_courses"></a>
+    <a href="#articles" data-i18n="nav_articles"></a><a href="#toolkit" data-i18n="nav_toolkit"></a>
+    <a href="#assessment" data-i18n="nav_assess"></a><a href="#services" data-i18n="nav_services"></a>
+    <a href="#contact" data-i18n="nav_contact"></a>
+  </div>
+</header>
+
+<main>
+<!-- ================= HERO ================= -->
+<section id="home" data-ctx="home" class="bg-gradient-to-br from-brand-100 via-white to-orange-50">
+  <div class="max-w-6xl mx-auto px-4 py-16 sm:py-24 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <p class="text-brand-600 font-bold mb-2" data-i18n="hero_kicker"></p>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-900 leading-tight" data-i18n="hero_title"></h1>
+      <p class="mt-3 text-lg font-semibold text-brand-700" data-i18n="hero_role"></p>
+      <p class="mt-4 text-slate-600 leading-relaxed" data-i18n="hero_desc"></p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#courses" class="btn btn-p" data-i18n="hero_cta1"></a>
+        <a href="#services" data-book="vbmapp" class="btn btn-o" data-i18n="hero_cta2"></a>
+        <a href="#services" data-book="supervision" class="btn btn-o" data-i18n="hero_cta3"></a>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-brand-100"><i class="fa-solid fa-puzzle-piece text-3xl text-brand-600"></i><p class="mt-2 font-bold" data-i18n="pill1"></p></div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-brand-100"><i class="fa-solid fa-people-roof text-3xl text-brand-600"></i><p class="mt-2 font-bold" data-i18n="pill2"></p></div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-brand-100"><i class="fa-solid fa-clipboard-check text-3xl text-brand-600"></i><p class="mt-2 font-bold" data-i18n="pill3"></p></div>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-brand-100"><i class="fa-solid fa-gift text-3xl text-warm"></i><p class="mt-2 font-bold" data-i18n="pill4"></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COURSES ================= -->
+<section id="courses" data-ctx="courses" class="max-w-6xl mx-auto px-4 py-16">
+  <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-900" data-i18n="courses_h"></h2>
+  <p class="mt-2 text-slate-600" data-i18n="courses_sub"></p>
+  <div id="courseGrid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+</section>
+
+<!-- ================= ARTICLES ================= -->
+<section id="articles" data-ctx="articles" class="bg-white border-y border-brand-100">
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-900" data-i18n="articles_h"></h2>
+    <p class="mt-2 text-slate-600" data-i18n="articles_sub"></p>
+    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+      <input id="searchBox" type="search" class="inp flex-1 !py-2.5" data-i18n-ph="search_ph">
+      <div id="catBar" class="flex flex-wrap gap-2"></div>
+    </div>
+    <div id="articleGrid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <p id="noResults" class="hidden mt-8 text-center text-slate-500" data-i18n="no_results"></p>
+  </div>
+</section>
+
+<!-- ================= TOOLKIT & GALLERY ================= -->
+<section id="toolkit" data-ctx="toolkit" class="max-w-6xl mx-auto px-4 py-16">
+  <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-900" data-i18n="toolkit_h"></h2>
+  <p class="mt-2 text-slate-600" data-i18n="toolkit_sub"></p>
+  <div id="sheetGrid" class="mt-6 grid sm:grid-cols-3 gap-5"></div>
+  <h3 class="mt-12 text-xl font-bold text-brand-900" data-i18n="gallery_h"></h3>
+  <div id="galleryGrid" class="mt-4 grid grid-cols-2 lg:grid-cols-3 gap-5"></div>
+</section>
+
+<!-- ================= CLINICAL ASSESSMENT SUITE ================= -->
+<section id="assessment" data-ctx="assessment" class="bg-white border-y border-brand-100">
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-900" data-i18n="assess_h"></h2>
+    <p class="mt-2 text-slate-600" data-i18n="assess_sub"></p>
+    <div class="note mt-4" data-i18n="assess_disclaimer"></div>
+    <div id="asTabs" class="mt-6 flex flex-wrap gap-2"></div>
+    <div id="asBody" class="mt-6"></div>
+  </div>
+</section>
+
+<!-- ================= PAID SERVICES ================= -->
+<section id="services" data-ctx="services" class="max-w-6xl mx-auto px-4 py-16">
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-900" data-i18n="services_h"></h2>
+      <p class="mt-2 text-slate-600" data-i18n="services_sub"></p>
+    </div>
+    <div class="flex items-center gap-2"><span class="text-sm" data-i18n="currency"></span>
+      <select id="curSel" class="inp !w-auto"><option value="SAR">SAR ﷼</option><option value="EGP">EGP E£</option><option value="USD">USD $</option></select></div>
+  </div>
+  <div id="serviceGrid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" data-ctx="contact" class="bg-brand-900 text-white">
+  <div class="max-w-4xl mx-auto px-4 py-16">
+    <h2 class="text-2xl sm:text-3xl font-extrabold" data-i18n="contact_h"></h2>
+    <p class="mt-2 text-brand-100" data-i18n="contact_sub"></p>
+    <form id="contactForm" class="mt-8 grid gap-4 text-slate-800">
+      <input id="fName" required class="inp !py-3" data-i18n-ph="f_name">
+      <input id="fEmail" type="email" required class="inp !py-3" data-i18n-ph="f_email">
+      <textarea id="fMsg" rows="5" required class="inp !py-3" data-i18n-ph="f_msg"></textarea>
+      <label class="flex items-start gap-2 text-sm text-brand-100"><input type="checkbox" required class="mt-1"><span data-i18n="contact_note"></span></label>
+      <div class="flex flex-wrap gap-3">
+        <button class="btn bg-warm text-brand-900 hover:brightness-95" data-i18n="f_send"></button>
+        <a data-wa target="_blank" rel="noopener" class="btn btn-g"><i class="fa-brands fa-whatsapp me-1"></i><span data-i18n="nav_wa"></span></a>
+      </div>
+      <p id="formStatus" class="text-sm text-brand-100"></p>
+    </form>
+    <p class="mt-6 text-sm text-brand-100">✉ <a class="underline" href="mailto:abaabozaid@gmail.com">abaabozaid@gmail.com</a></p>
+    <div id="socialBar" class="mt-6 flex flex-wrap gap-3"></div>
+  </div>
+</section>
+</main>
+
+<footer class="bg-brand-900/95 text-brand-100 text-center text-sm py-6 border-t border-white/10 px-4">
+  © <span id="yr"></span> Mohamed Farag Abo Zaid | ABA Praxis · <span data-i18n="footer"></span>
+  <button id="adminOpen" class="ms-2 text-brand-100/60 hover:text-white" aria-label="Admin" title="Admin"><i class="fa-solid fa-gear"></i></button>
+</footer>
+
+<a data-wa target="_blank" rel="noopener" aria-label="WhatsApp" class="fixed bottom-5 z-40 w-14 h-14 rounded-full bg-green-600 text-white text-3xl flex items-center justify-center shadow-xl hover:bg-green-700" id="waFloat"><i class="fa-brands fa-whatsapp"></i></a>
+
+<!-- Generic modal -->
+<div id="modal" class="hidden fixed inset-0 z-50 modal-bg items-center justify-center p-4">
+  <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[88vh] overflow-y-auto p-6 relative">
+    <button id="modalClose" class="absolute top-3 end-4 text-2xl text-slate-500" aria-label="Close">×</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   1) SITE SETTINGS — edit these
+   ===================================================================== */
+const CONFIG = {
+  email: "abaabozaid@gmail.com",           // receives bookings, assessment requests, contact messages
+  whatsappNumber: "201222661073",          // international format, no +
+  // Prices per service id and currency. null = "contact for price".
+  prices: {
+    vbmapp:      { SAR:null, EGP:null, USD:null },
+    speech:      { SAR:null, EGP:null, USD:null },
+    supervision: { SAR:null, EGP:null, USD:null },
+    iep:         { SAR:null, EGP:null, USD:null }
+  },
+  // Payment details — fill with YOUR real details. Nothing here is a real account.
+  bank: { holder:"", bankName:"", iban:"", account:"", swift:"" },
+  wallets: [
+    { name:"Vodafone Cash", number:"" },
+    { name:"STC Pay",       number:"" },
+    { name:"InstaPay",      number:"" }
+  ],
+  // Social links — leave "" to show the icon as "coming soon"
+  social: { youtube:"", facebook:"", instagram:"", x:"", linkedin:"", telegram:"", tiktok:"" }
+};
+
+/* =====================================================================
+   2) CONTENT DATA — add items here only
+   ===================================================================== */
+const categories = [
+  { key:"all", ar:"الكل", en:"All" }, { key:"basics", ar:"أساسيات ABA", en:"ABA Basics" },
+  { key:"behavior", ar:"إدارة السلوك", en:"Behavior Support" }, { key:"language", ar:"اللغة والتواصل", en:"Language & Communication" },
+  { key:"home", ar:"الأسرة والمنزل", en:"Family & Home" }, { key:"speech", ar:"النطق والتلعثم", en:"Speech & Stuttering" }
+];
+// youtubeId = text after v= in a YouTube link ; pdf = link/path to a PDF
+const courses = [
+  { id:1, youtubeId:"", pdf:"", title_ar:"مبادئ ABA للأهالي", desc_ar:"مدخل مبسط: التعزيز، السلوك ووظيفته، وتطبيقها في الحياة اليومية.", title_en:"ABA Principles for Parents", desc_en:"A simple introduction: reinforcement, behavior and function, and daily-life application." },
+  { id:2, youtubeId:"", pdf:"", title_ar:"التدريب بالمحاولات المنفصلة (DTT)", desc_ar:"خطوات تنفيذ المحاولة: التعليمة، التلقين، الاستجابة، التعزيز.", title_en:"Discrete Trial Training (DTT)", desc_en:"Implementing a trial: instruction, prompt, response, reinforcement." },
+  { id:3, youtubeId:"", pdf:"", title_ar:"التدريب في البيئة الطبيعية (NET)", desc_ar:"حوّل اللعب والروتين اليومي إلى فرص تعلّم طبيعية.", title_en:"Natural Environment Teaching (NET)", desc_en:"Turn play and daily routines into natural learning opportunities." },
+  { id:4, youtubeId:"", pdf:"", title_ar:"إدارة السلوكيات المشكلة", desc_ar:"فهم الوظيفة، الوقاية، والسلوك البديل، واستراتيجيات الاستجابة الآمنة.", title_en:"Managing Challenging Behavior", desc_en:"Understanding function, prevention, replacement behavior and safe response strategies." },
+  { id:5, youtubeId:"", pdf:"", title_ar:"استراتيجيات السلوك اللفظي", desc_ar:"الطلب، التسمية، التفاعل اللفظي، والمحاكاة الصوتية وفق تحليل السلوك اللفظي.", title_en:"Verbal Behavior Strategies", desc_en:"Mand, tact, intraverbal and echoic training within verbal behavior analysis." }
+];
+const articles = [
+  { id:1, cat:"basics", date:"2026-01-10", title_ar:"ما هو تحليل السلوك التطبيقي (ABA)؟", desc_ar:"تعريف مبسط للمنهج العلمي وأهدافه.",
+    body_ar:"تحليل السلوك التطبيقي علم يدرس العلاقة بين السلوك والبيئة، ويستخدم مبادئ التعلم — وفي مقدمتها التعزيز — لتعليم مهارات جديدة وتقليل السلوكيات التي تعيق التعلم. يعتمد على القياس المستمر للتقدم وتعديل الخطة وفق البيانات، ويجب أن تُصمَّم البرامج فردياً وتحترم كرامة الطفل ورغباته.",
+    title_en:"What Is Applied Behavior Analysis (ABA)?", desc_en:"A simple definition of the science and its goals.",
+    body_en:"Applied behavior analysis is a science that studies the relationship between behavior and environment. It uses learning principles — chiefly reinforcement — to teach new skills and reduce behaviors that interfere with learning. Progress is measured continuously and plans are adjusted using data. Programs should be individualized and respect the child's dignity and preferences." },
+  { id:2, cat:"behavior", date:"2026-01-24", title_ar:"فهم وظيفة السلوك: لماذا يفعل طفلي ذلك؟", desc_ar:"أربع وظائف شائعة للسلوك.",
+    body_ar:"كل سلوك يؤدي وظيفة غالباً: الحصول على شيء مرغوب، الهروب من مهمة أو موقف، لفت الانتباه، أو الحصول على مدخل حسي. تحديد الوظيفة هو الخطوة الأولى لاختيار استراتيجية مناسبة، وغالباً نعلّم الطفل بديلاً مقبولاً (مثل طلب استراحة) يؤدي الوظيفة نفسها.",
+    title_en:"Understanding Behavior Function: Why Does My Child Do That?", desc_en:"Four common functions of behavior.",
+    body_en:"Behavior usually serves a function: getting something wanted, escaping a task or situation, gaining attention, or sensory input. Identifying the function is the first step to choosing a suitable strategy, and we usually teach an acceptable replacement (such as asking for a break) that serves the same function." },
+  { id:3, cat:"language", date:"2026-02-05", title_ar:"كيف أشجع طفلي على الطلب والتواصل؟", desc_ar:"أفكار عملية لتنمية مهارة الطلب.",
+    body_ar:"ابدأ بما يحبه طفلك. اخلق فرصاً للطلب (ضع الغرض المفضل في مكان مرئي لكن بعيد المنال)، انتظر بضع ثوانٍ، ثم ساعده بالتلقين المناسب وعزّز المحاولة فوراً. التواصل قد يكون كلاماً أو إشارات أو صوراً — المهم أن يفهمه الطفل ويستخدمه بفاعلية.",
+    title_en:"How Do I Encourage My Child to Request and Communicate?", desc_en:"Practical ideas to build requesting skills.",
+    body_en:"Start with what your child loves. Create chances to request (place a favorite item in view but out of reach), wait a few seconds, then help with an appropriate prompt and reinforce the attempt immediately. Communication can be speech, gestures or pictures — what matters is that it works for the child." },
+  { id:4, cat:"home", date:"2026-02-20", title_ar:"روتين يومي منظم يساعد طفلك", desc_ar:"الجداول البصرية وتقليل القلق.",
+    body_ar:"الروتين المتوقع يقلل القلق ويسهّل الانتقال بين الأنشطة. استخدم جدولاً بصرياً بالصور، أعلن عن التغييرات مسبقاً، وقدّم تعزيزاً عند الالتزام. ابدأ بخطوات قليلة ثم زد تدريجياً.",
+    title_en:"A Structured Daily Routine That Helps Your Child", desc_en:"Visual schedules and reducing anxiety.",
+    body_en:"A predictable routine lowers anxiety and eases transitions. Use a picture schedule, announce changes in advance, and reinforce following the routine. Start with a few steps and add gradually." },
+  { id:5, cat:"speech", date:"2026-03-02", title_ar:"التلعثم عند الأطفال: متى أقلق؟", desc_ar:"فرّق بين عدم الطلاقة الطبيعي والتلعثم.",
+    body_ar:"كثير من الأطفال يمرّون بفترة عدم طلاقة بين عمر سنتين وخمس سنوات. يستدعي الأمر تقييماً متخصصاً إذا استمر التلعثم أكثر من ستة أشهر، أو ظهرت حركات مصاحبة وتوتر واضح، أو تجنّب الطفل الكلام، أو وُجد تاريخ عائلي. تجنّب إكمال جمل الطفل أو مطالبته بإعادة الكلام ببطء، وامنحه وقتاً للحديث.",
+    title_en:"Stuttering in Children: When Should I Worry?", desc_en:"Telling normal disfluency from stuttering.",
+    body_en:"Many children go through a period of disfluency between ages two and five. Seek a specialist assessment if stuttering lasts over six months, if physical tension or associated movements appear, if the child avoids speaking, or if there is a family history. Avoid finishing the child's sentences or asking them to repeat slowly; give them time to speak." }
+];
+const gallery = [
+  { id:1, src:"", icon:"fa-calendar-days", title_ar:"الجدول البصري اليومي", title_en:"Daily Visual Schedule" },
+  { id:2, src:"", icon:"fa-star", title_ar:"لوحة التعزيز", title_en:"Reinforcement Chart" },
+  { id:3, src:"", icon:"fa-comments", title_ar:"بطاقات التواصل بالصور", title_en:"Picture Communication Cards" },
+  { id:4, src:"", icon:"fa-brain", title_ar:"إنفوجرافيك: وظائف السلوك", title_en:"Infographic: Functions of Behavior" },
+  { id:5, src:"", icon:"fa-handshake", title_ar:"بوستر: نصائح للأهالي", title_en:"Poster: Tips for Parents" },
+  { id:6, src:"", icon:"fa-bullseye", title_ar:"جدول تتبع الأهداف", title_en:"Goal Tracking Sheet" }
+];
+const services = [
+  { id:"vbmapp", icon:"fa-clipboard-list", title_ar:"جلسة تقييم شامل VB-MAPP / ABLLS-R", title_en:"Comprehensive VB-MAPP / ABLLS-R Assessment",
+    desc_ar:"تقييم مهارات اللغة والتعلم مع تقرير مكتوب وتوصيات لبرنامج التدخل.", desc_en:"Language and learning skills assessment with a written report and intervention recommendations." },
+  { id:"speech", icon:"fa-comment-medical", title_ar:"جلسة تشخيص وتقييم نطق وتلعثم", title_en:"Speech, Language & Stuttering Evaluation",
+    desc_ar:"فحص اللغة والنطق ومقياس شدة التلعثم مع خطة مقترحة.", desc_en:"Language and articulation screening and stuttering severity measure with a proposed plan." },
+  { id:"supervision", icon:"fa-user-tie", title_ar:"باقة إشراف إكلينيكي للأخصائيين والمراكز", title_en:"Clinical Supervision Package (Specialists & Centers)",
+    desc_ar:"مراجعة الحالات والبيانات وتطوير مهارات التنفيذ بجلسات دورية.", desc_en:"Case and data review and implementation coaching in regular sessions." },
+  { id:"iep", icon:"fa-file-signature", title_ar:"تصميم برنامج فردي IEP", title_en:"Individualized Program (IEP) Design",
+    desc_ar:"أهداف قابلة للقياس وخطة تنفيذ ومتابعة مبنية على نتائج التقييم.", desc_en:"Measurable goals and an implementation and follow-up plan based on assessment results." }
+];
+
+/* =====================================================================
+   3) UI TRANSLATIONS
+   ===================================================================== */
+const i18n = {
+  ar: {
+    nav_home:"الرئيسية", nav_courses:"الدورات", nav_articles:"المقالات", nav_toolkit:"الأدوات", nav_assess:"التقييم", nav_services:"الخدمات", nav_contact:"تواصل",
+    nav_wa:"واتساب", lang_btn:"EN",
+    hero_kicker:"منصة مجانية للتوعية + خدمات إكلينيكية مدفوعة",
+    hero_title:"محمد فرج أبوزيد",
+    hero_role:"أخصائي ومحلل سلوك تطبيقي ومشرف إكلينيكي",
+    hero_desc:"دورات ومقالات وأدوات مجانية للأهالي والأخصائيين في تحليل السلوك التطبيقي والتربية الخاصة والنطق واللغة، مع أدوات تقييم تفاعلية، وخدمات تقييم شامل وإشراف مهني بالحجز.",
+    hero_cta1:"تصفح الدورات المجانية", hero_cta2:"احجز تقييماً شاملاً", hero_cta3:"اطلب إشرافاً مهنياً",
+    pill1:"علم قائم على الدليل", pill2:"تمكين الأهالي", pill3:"أدوات تقييم تفاعلية", pill4:"المحتوى التوعوي مجاني",
+    courses_h:"أكاديمية الدورات المسجلة (مجانية)", courses_sub:"شاهد الدورات في أي وقت وحمّل المرفقات.",
+    articles_h:"المدونة العلمية والمنشورات", articles_sub:"إرشادات علمية مبسطة للأسرة والأخصائيين.",
+    search_ph:"ابحث في المقالات...", no_results:"لا توجد نتائج مطابقة.",
+    toolkit_h:"الركن البصري وحقيبة أدوات ABA", toolkit_sub:"استمارات جمع بيانات مجانية جاهزة للطباعة أو الحفظ.",
+    gallery_h:"معرض الصور والإنفوجرافيك",
+    sheet_abc:"استمارة ABC لجمع البيانات", sheet_freq:"استمارة التكرار / المدة", sheet_token:"لوحة الاقتصاد الرمزي",
+    sheet_abc_d:"سجّل المسبّب والسلوك والنتيجة.", sheet_freq_d:"عدّ تكرار السلوك ومدته يومياً.", sheet_token_d:"لوحة نجوم للتعزيز الرمزي.",
+    print:"طباعة", download:"تحميل",
+    assess_h:"ركن التقييم الإكلينيكي المتقدم", assess_sub:"أدوات رقمية تفاعلية تحسب النتائج مبدئياً وتصدر تقريراً، أو احجز تقييماً شاملاً.",
+    assess_disclaimer:"تنبيه: هذه أدوات تدريبية وفرز مبدئي مبسّطة، وليست النسخ الرسمية المرخّصة للمقاييس، ولا تُعدّ تشخيصاً. يجب إجراء التقييم والتشخيص الرسمي بواسطة مختص مؤهل.",
+    t_vb:"VB-MAPP", t_ablls:"ABLLS-R", t_dsm:"معايير DSM-5", t_speech:"النطق واللغة", t_ssi:"التلعثم (SSI)", t_fba:"FBA / BIP",
+    gen_report:"إصدار تقرير", book_assess:"احجز تقييماً شاملاً",
+    services_h:"الخدمات المدفوعة", services_sub:"الحجز بعد التحويل وإرفاق الإيصال. المحتوى التعليمي يبقى مجانياً.", currency:"العملة:",
+    price_contact:"تواصل لمعرفة السعر", book_now:"احجز الآن",
+    contact_h:"تواصل واستشارات", contact_sub:"أرسل رسالتك وسنرد عليك عبر البريد الإلكتروني.",
+    f_name:"الاسم", f_email:"البريد الإلكتروني", f_msg:"رسالتك", f_send:"إرسال",
+    contact_note:"أوافق على إرسال بياناتي عبر خدمة FormSubmit إلى بريد المنصة لأغراض التواصل فقط.",
+    read_more:"اقرأ المقال", watch_soon:"سيُضاف الفيديو قريباً", pdf:"تحميل PDF", pdf_soon:"المرفق قريباً",
+    share:"مشاركة واتساب", sent:"تم إرسال رسالتك. شكراً!", send_fail:"تعذّر الإرسال الآلي؛ سيُفتح تطبيق البريد لإرسالها.",
+    footer:"المحتوى توعوي ولا يغني عن التقييم والتشخيص المتخصص.",
+    wa_default:"مرحباً أستاذ محمد، أود الاستفسار عن خدمات ABA Praxis",
+    wa_ctx:{ home:"مرحباً أستاذ محمد، أود الاستفسار عن خدماتكم.", courses:"مرحباً أستاذ محمد، لدي سؤال عن الدورات المسجلة.", articles:"مرحباً أستاذ محمد، لدي استفسار حول أحد المقالات.", toolkit:"مرحباً أستاذ محمد، أود الاستفسار عن أدوات جمع البيانات.", assessment:"مرحباً أستاذ محمد، أرغب في حجز تقييم VB-MAPP / ABLLS-R وقد اطلعت على الأدوات.", services:"مرحباً أستاذ محمد، أرغب في حجز خدمة مدفوعة وقد اطلعت على تفاصيل التحويل.", contact:"مرحباً أستاذ محمد، أود التواصل معكم." },
+    co_title:"تأكيد الحجز والدفع", co_service:"الخدمة", co_price:"السعر", co_bank:"تحويل بنكي", co_wallet:"محافظ إلكترونية",
+    co_holder:"اسم المستفيد", co_bankname:"البنك", co_iban:"IBAN", co_acc:"رقم الحساب", co_copy:"نسخ", co_copied:"تم النسخ", co_notset:"(لم تُضف بعد — أضفها في إعدادات الموقع)",
+    co_name:"الاسم الكامل", co_phone:"رقم الهاتف / واتساب", co_email:"البريد الإلكتروني", co_date:"الموعد المفضل", co_time:"الوقت المفضل",
+    co_ref:"الرقم المرجعي للعملية", co_receipt:"إرفاق صورة الإيصال (اختياري إن أدخلت الرقم)", co_confirm:"تأكيد الحجز", co_need:"أدخل الرقم المرجعي أو أرفق الإيصال.",
+    co_done:"تم تجهيز الحجز. سيُفتح واتساب لتأكيد الموعد.", co_consent:"أوافق على استخدام بياناتي لأغراض الحجز والتواصل فقط."
+  },
+  en: {
+    nav_home:"Home", nav_courses:"Courses", nav_articles:"Articles", nav_toolkit:"Toolkit", nav_assess:"Assessment", nav_services:"Services", nav_contact:"Contact",
+    nav_wa:"WhatsApp", lang_btn:"عربي",
+    hero_kicker:"Free awareness platform + paid clinical services",
+    hero_title:"Mohamed Farag Abo Zaid",
+    hero_role:"Applied Behavior Analyst & Clinical Supervisor",
+    hero_desc:"Free courses, articles and tools for families and professionals in ABA, special education and speech-language, plus interactive assessment tools and bookable comprehensive assessment and clinical supervision services.",
+    hero_cta1:"Browse Free Courses", hero_cta2:"Book a Comprehensive Assessment", hero_cta3:"Request Clinical Supervision",
+    pill1:"Evidence-based", pill2:"Parent empowerment", pill3:"Interactive assessment tools", pill4:"Awareness content is free",
+    courses_h:"Recorded Course Academy (Free)", courses_sub:"Watch anytime and download the handouts.",
+    articles_h:"Scientific Blog & Posts", articles_sub:"Simple, science-based guidance for families and professionals.",
+    search_ph:"Search articles...", no_results:"No matching results.",
+    toolkit_h:"Visuals & ABA Toolkit", toolkit_sub:"Free data-collection forms ready to print or save.",
+    gallery_h:"Image & Infographic Gallery",
+    sheet_abc:"ABC Data Sheet", sheet_freq:"Frequency / Duration Tracking", sheet_token:"Token Economy Board",
+    sheet_abc_d:"Record antecedent, behavior, consequence.", sheet_freq_d:"Count behavior frequency and duration daily.", sheet_token_d:"Star board for token reinforcement.",
+    print:"Print", download:"Download",
+    assess_h:"Advanced Clinical Assessment Suite", assess_sub:"Interactive digital tools that compute preliminary results and produce a report — or book a comprehensive assessment.",
+    assess_disclaimer:"Notice: these are simplified training and screening tools, not the official licensed instruments, and they are not a diagnosis. Formal assessment and diagnosis must be done by a qualified professional.",
+    t_vb:"VB-MAPP", t_ablls:"ABLLS-R", t_dsm:"DSM-5 Criteria", t_speech:"Speech & Language", t_ssi:"Stuttering (SSI)", t_fba:"FBA / BIP",
+    gen_report:"Generate report", book_assess:"Book a comprehensive assessment",
+    services_h:"Paid Services", services_sub:"Booking follows the transfer and receipt upload. Educational content stays free.", currency:"Currency:",
+    price_contact:"Contact for price", book_now:"Book now",
+    contact_h:"Contact & Consultations", contact_sub:"Send your message and we'll reply by email.",
+    f_name:"Name", f_email:"Email", f_msg:"Your message", f_send:"Send",
+    contact_note:"I agree to my data being sent through FormSubmit to the platform's email for contact purposes only.",
+    read_more:"Read article", watch_soon:"Video coming soon", pdf:"Download PDF", pdf_soon:"Handout coming soon",
+    share:"Share on WhatsApp", sent:"Your message was sent. Thank you!", send_fail:"Automatic sending failed; your mail app will open to send it.",
+    footer:"Educational content only; it does not replace professional assessment or diagnosis.",
+    wa_default:"Hello Mohamed, I'd like to ask about ABA Praxis services",
+    wa_ctx:{ home:"Hello Mohamed, I'd like to ask about your services.", courses:"Hello Mohamed, I have a question about the recorded courses.", articles:"Hello Mohamed, I have a question about one of the articles.", toolkit:"Hello Mohamed, I'd like to ask about the data-collection tools.", assessment:"Hello Mohamed, I'd like to book a VB-MAPP / ABLLS-R assessment; I've reviewed the tools.", services:"Hello Mohamed, I'd like to book a paid service and have reviewed the transfer details.", contact:"Hello Mohamed, I'd like to get in touch." },
+    co_title:"Booking & Payment", co_service:"Service", co_price:"Price", co_bank:"Bank transfer", co_wallet:"E-wallets",
+    co_holder:"Account holder", co_bankname:"Bank", co_iban:"IBAN", co_acc:"Account no.", co_copy:"Copy", co_copied:"Copied", co_notset:"(not set yet — add it in the site settings)",
+    co_name:"Full name", co_phone:"Phone / WhatsApp", co_email:"Email", co_date:"Preferred date", co_time:"Preferred time",
+    co_ref:"Transaction reference no.", co_receipt:"Attach receipt image (optional if you entered the reference)", co_confirm:"Confirm booking", co_need:"Enter the reference number or attach the receipt.",
+    co_done:"Booking prepared. WhatsApp will open to confirm the appointment.", co_consent:"I agree my data is used only for booking and contact."
+  }
+};
+
+/* =====================================================================
+   4) CORE ENGINE
+   ===================================================================== */
+let lang = (new URLSearchParams(location.search).get('lang')) || (()=>{try{return localStorage.getItem('lang')}catch(e){}})() || 'ar';
+if (!i18n[lang]) lang = 'ar';
+let activeCat = 'all', query = '', currency = 'SAR', waCtx = 'home', curTab = 'vb';
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const t = k => i18n[lang][k] !== undefined ? i18n[lang][k] : k;
+const D = a => lang === 'ar' ? a[1] : a[0];             // [en, ar] pair
+const esc = s => String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const waLink = text => `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
+const waCtxMsg = () => (i18n[lang].wa_ctx[waCtx]) || t('wa_default');
+
+function renderCourses(){
+  $('#courseGrid').innerHTML = courses.map(c => `
+    <article class="card bg-white rounded-2xl border border-brand-100 overflow-hidden flex flex-col">
+      ${c.youtubeId
+        ? `<div class="aspect-video"><iframe class="w-full h-full" loading="lazy" src="https://www.youtube.com/embed/${esc(c.youtubeId)}" title="${esc(c['title_'+lang])}" allowfullscreen></iframe></div>`
+        : `<div class="aspect-video bg-brand-100 flex items-center justify-center text-brand-700 font-semibold"><i class="fa-brands fa-youtube me-2"></i>${t('watch_soon')}</div>`}
+      <div class="p-5 flex-1 flex flex-col">
+        <h3 class="font-bold text-lg text-brand-900">${esc(c['title_'+lang])}</h3>
+        <p class="mt-2 text-sm text-slate-600 flex-1">${esc(c['desc_'+lang])}</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          ${c.pdf ? `<a href="${esc(c.pdf)}" download class="btn btn-p !py-2 text-sm"><i class="fa-solid fa-file-pdf me-1"></i>${t('pdf')}</a>`
+                  : `<span class="px-3 py-2 rounded-lg bg-slate-100 text-slate-400 text-sm"><i class="fa-solid fa-file-pdf me-1"></i>${t('pdf_soon')}</span>`}
+          <a target="_blank" rel="noopener" href="${waLink(c['title_'+lang] + ' - ' + location.href)}" class="btn btn-o !py-2 text-sm !border-green-600 !text-green-700">${t('share')}</a>
+        </div>
+      </div>
+    </article>`).join('');
+}
+function renderCats(){
+  $('#catBar').innerHTML = categories.map(c => `<button data-cat="${c.key}" class="px-3 py-2 rounded-full text-sm font-semibold border ${c.key===activeCat?'tab-on':'bg-white text-slate-600 border-slate-300'}">${esc(c[lang])}</button>`).join('');
+  $$('[data-cat]').forEach(b => b.onclick = () => { activeCat = b.dataset.cat; renderCats(); renderArticles(); });
+}
+function renderArticles(){
+  const q = query.trim().toLowerCase();
+  const list = articles.filter(a => (activeCat==='all' || a.cat===activeCat) && (!q || (a['title_'+lang]+' '+a['desc_'+lang]+' '+a['body_'+lang]).toLowerCase().includes(q)));
+  $('#noResults').classList.toggle('hidden', list.length>0);
+  $('#articleGrid').innerHTML = list.map(a => {
+    const cat = categories.find(c=>c.key===a.cat);
+    return `<article class="card bg-brand-50/60 rounded-2xl border border-brand-100 p-5 flex flex-col">
+      <span class="text-xs font-bold text-brand-600">${esc(cat ? cat[lang] : '')}</span>
+      <h3 class="mt-1 font-bold text-lg text-brand-900">${esc(a['title_'+lang])}</h3>
+      <p class="mt-2 text-sm text-slate-600 flex-1">${esc(a['desc_'+lang])}</p>
+      <div class="mt-4 flex gap-2 flex-wrap">
+        <button data-article="${a.id}" class="btn btn-p !py-2 text-sm">${t('read_more')}</button>
+        <a target="_blank" rel="noopener" href="${waLink(a['title_'+lang] + ' - ' + location.href)}" class="btn btn-o !py-2 text-sm !border-green-600 !text-green-700">${t('share')}</a>
+      </div></article>`;
+  }).join('');
+  $$('[data-article]').forEach(b => b.onclick = () => openArticle(+b.dataset.article));
+}
+function renderGallery(){
+  $('#galleryGrid').innerHTML = gallery.map(g => `
+    <figure class="card bg-white rounded-2xl border border-brand-100 overflow-hidden cursor-pointer" data-img="${g.id}">
+      <div class="aspect-square bg-gradient-to-br from-brand-100 to-orange-50 flex items-center justify-center overflow-hidden">
+        ${g.src ? `<img src="${esc(g.src)}" alt="${esc(g['title_'+lang])}" loading="lazy" class="w-full h-full object-cover">` : `<i class="fa-solid ${g.icon||'fa-image'} text-5xl text-brand-600"></i>`}
+      </div>
+      <figcaption class="p-3 text-sm font-semibold text-center">${esc(g['title_'+lang])}</figcaption>
+    </figure>`).join('');
+  $$('[data-img]').forEach(f => f.onclick = () => openImage(+f.dataset.img));
+}
+function showModal(html){ $('#modalBody').innerHTML = html; $('#modal').classList.remove('hidden'); $('#modal').classList.add('flex'); }
+function closeModal(){ $('#modal').classList.add('hidden'); $('#modal').classList.remove('flex'); }
+function openArticle(id){
+  const a = articles.find(x=>x.id===id); if(!a) return;
+  showModal(`<h3 class="text-2xl font-extrabold text-brand-900 pe-8">${esc(a['title_'+lang])}</h3><p class="text-xs text-slate-400 mt-1">${esc(a.date)}</p>
+    <p class="mt-4 leading-8 text-slate-700">${esc(a['body_'+lang])}</p>
+    <a target="_blank" rel="noopener" href="${waLink(a['title_'+lang] + ' - ' + location.href)}" class="btn btn-g mt-5"><i class="fa-brands fa-whatsapp me-1"></i>${t('share')}</a>`);
+}
+function openImage(id){
+  const g = gallery.find(x=>x.id===id); if(!g) return;
+  showModal(`<div class="pe-6">${g.src ? `<img src="${esc(g.src)}" alt="" class="w-full rounded-xl">` : `<div class="aspect-video rounded-xl bg-gradient-to-br from-brand-100 to-orange-50 flex items-center justify-center"><i class="fa-solid ${g.icon||'fa-image'} text-8xl text-brand-600"></i></div>`}
+    <p class="mt-3 font-bold text-lg">${esc(g['title_'+lang])}</p>
+    ${g.src ? `<a href="${esc(g.src)}" download class="btn btn-p mt-3"><i class="fa-solid fa-download me-1"></i>${t('download')}</a>` : ''}</div>`);
+}
+
+/* ---------- Toolkit: printable/downloadable data sheets (generated locally) ---------- */
+function sheetHTML(kind){
+  const ar = lang==='ar', dir = ar?'rtl':'ltr';
+  const css = `body{font-family:${ar?'Cairo,':'Inter,'}Arial,sans-serif;margin:24px;direction:${dir}}h1{font-size:20px;color:#1b6b62}table{border-collapse:collapse;width:100%}td,th{border:1px solid #888;padding:8px;font-size:12px}th{background:#eaf6f4}.star{display:inline-block;width:46px;height:46px;border:2px solid #21867a;border-radius:50%;margin:4px}@media print{button{display:none}}`;
+  const hdr = `<p>${ar?'اسم الطفل':'Child'}: ________________ &nbsp; ${ar?'الملاحظ':'Observer'}: ________________ &nbsp; ${ar?'السلوك المستهدف':'Target behavior'}: ________________</p>`;
+  let title='', body='';
+  if (kind==='abc'){
+    title = ar?'استمارة ABC لجمع البيانات':'ABC Data Sheet';
+    const heads = ar?['التاريخ/الوقت','المكان','المسبّب (A)','السلوك (B)','النتيجة (C)','الوظيفة المتوقعة']:['Date/Time','Setting','Antecedent (A)','Behavior (B)','Consequence (C)','Suspected function'];
+    body = hdr+`<table><tr>${heads.map(h=>`<th>${h}</th>`).join('')}</tr>${('<tr>'+'<td>&nbsp;<br>&nbsp;</td>'.repeat(6)+'</tr>').repeat(12)}</table>`;
+  } else if (kind==='freq'){
+    title = ar?'استمارة التكرار / المدة':'Frequency / Duration Tracking';
+    const heads = ar?['التاريخ','الجلسة/الفترة','التكرار (عدّ)','العدد الكلي','مدة كل حدوث (ثانية)','ملاحظات']:['Date','Session/Interval','Tally','Total','Duration per occurrence (sec)','Notes'];
+    body = hdr+`<table><tr>${heads.map(h=>`<th>${h}</th>`).join('')}</tr>${('<tr>'+'<td>&nbsp;<br>&nbsp;</td>'.repeat(6)+'</tr>').repeat(14)}</table>`;
+  } else {
+    title = ar?'لوحة الاقتصاد الرمزي':'Token Economy Board';
+    body = `<p>${ar?'اسم الطفل':'Child'}: ________________ &nbsp; ${ar?'السلوك المطلوب':'Target'}: ________________</p><p>${ar?'ألصق نجمة أو ارسم علامة عند كل نجاح:':'Place a star or tick for each success:'}</p>
+      <div>${'<span class="star"></span>'.repeat(10)}</div><h3>${ar?'المعزّز عند اكتمال النجوم':'Reward when board is complete'}:</h3><div style="border:2px dashed #888;height:120px"></div>`;
+  }
+  return `<!DOCTYPE html><html lang="${lang}" dir="${dir}"><head><meta charset="utf-8"><title>${title}</title><style>${css}</style></head><body><h1>${title} — Mohamed Farag Abo Zaid | ABA Praxis</h1>${body}<p><button onclick="print()">${t('print')}</button></p></body></html>`;
+}
+function renderSheets(){
+  const defs = [['abc','fa-table-list','sheet_abc','sheet_abc_d'],['freq','fa-chart-simple','sheet_freq','sheet_freq_d'],['token','fa-star','sheet_token','sheet_token_d']];
+  $('#sheetGrid').innerHTML = defs.map(d=>`<div class="card bg-white rounded-2xl border border-brand-100 p-5">
+    <i class="fa-solid ${d[1]} text-3xl text-brand-600"></i><h3 class="mt-3 font-bold text-brand-900">${t(d[2])}</h3><p class="text-sm text-slate-600 mt-1">${t(d[3])}</p>
+    <div class="mt-4 flex gap-2"><button data-sheet="${d[0]}" data-act="print" class="btn btn-o !py-2 text-sm">${t('print')}</button><button data-sheet="${d[0]}" data-act="dl" class="btn btn-p !py-2 text-sm">${t('download')}</button></div></div>`).join('');
+  $$('[data-sheet]').forEach(b => b.onclick = () => {
+    const html = sheetHTML(b.dataset.sheet);
+    if (b.dataset.act==='print'){ const w = window.open('','_blank'); if(w){ w.document.write(html); w.document.close(); setTimeout(()=>w.print(),400);} }
+    else { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([html],{type:'text/html'})); a.download = 'ABA-'+b.dataset.sheet+'-'+lang+'.html'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); }
+  });
+}
+
+/* =====================================================================
+   5) CLINICAL ASSESSMENT SUITE
+   ===================================================================== */
+const S = {};                                  // flat state: "tab:..." -> value
+const gv = (k,d=0) => S[k]===undefined ? d : S[k];
+const charts = {};
+function drawChart(id,type,labels,datasets,opts){
+  const el = document.getElementById(id); if(!el || !window.Chart) return;
+  if (charts[id] && charts[id].canvas !== el){ charts[id].destroy(); delete charts[id]; }
+  if (charts[id]){ charts[id].data.labels = labels; charts[id].data.datasets = datasets; charts[id].update(); return; }
+  charts[id] = new Chart(el, { type, data:{labels,datasets}, options:Object.assign({responsive:true,maintainAspectRatio:true},opts||{}) });
+}
+function killCharts(){ Object.values(charts).forEach(c=>c.destroy()); for(const k in charts) delete charts[k]; }
+
+const VB_DOM = [['Mand','الطلب'],['Tact','التسمية'],['Listener Responding','الاستجابة كمستمع'],['Visual Perceptual / MTS','الإدراك البصري والمطابقة'],['Independent Play','اللعب المستقل'],['Social Behavior & Play','السلوك الاجتماعي'],['Motor Imitation','التقليد الحركي'],['Echoic','المحاكاة الصوتية'],['Spontaneous Vocal Behavior','السلوك الصوتي التلقائي'],['LRFFC','الاستجابة بالوظيفة والفئة'],['Intraverbal','التفاعل اللفظي'],['Classroom Routines','روتين الصف'],['Linguistic Structure','البنية اللغوية'],['Reading','القراءة'],['Writing','الكتابة'],['Math','الرياضيات']];
+const VB_LVL = [['Level 1 (0–18 m)','المستوى 1 (0–18 شهراً)'],['Level 2 (18–30 m)','المستوى 2 (18–30 شهراً)'],['Level 3 (30–48 m)','المستوى 3 (30–48 شهراً)']];
+const VB_BAR = [['Negative behaviors','سلوكيات سلبية'],['Instructional control','ضعف الضبط التعليمي'],['Defective mand','قصور في الطلب'],['Defective tact','قصور في التسمية'],['Defective motor imitation','قصور في التقليد الحركي'],['Defective echoic','قصور في المحاكاة الصوتية'],['Defective VP-MTS','قصور في الإدراك البصري'],['Defective listener skills','قصور مهارات المستمع'],['Defective intraverbal','قصور التفاعل اللفظي'],['Defective social skills','قصور المهارات الاجتماعية'],['Prompt dependency','الاعتماد على التلقين'],['Scrolling','التمرير العشوائي للاستجابات'],['Defective scanning','قصور المسح البصري'],['Defective conditional discriminations','قصور التمييز الشرطي'],['Failure to generalize','ضعف التعميم'],['Weak motivators','ضعف المحفّزات'],['Response requirement weakens motivators','المتطلبات تُضعف المحفّز'],['Reinforcer dependency','الاعتماد على المعزز'],['Self-stimulation','التحفيز الذاتي'],['Articulation impairment','قصور النطق'],['Obsessive-compulsive behavior','سلوك وسواسي قهري'],['Hyperactive behavior','فرط الحركة'],['Failure to make eye contact','ضعف التواصل البصري'],['Sensory defensiveness','دفاعية حسية']];
+const VB_TRN = [['Milestones score','درجة المعالم'],['Barriers score','درجة العوائق'],['Negative behaviors','السلوكيات السلبية'],['Classroom/group skills','مهارات المجموعة'],['Social skills','المهارات الاجتماعية'],['Independent academic work','العمل الأكاديمي المستقل'],['Generalization','التعميم'],['Variety of reinforcers','تنوع المعززات'],['Rate of skill acquisition','معدل اكتساب المهارات'],['Retention','الاحتفاظ بالمهارات'],['Natural-environment learning','التعلم في البيئة الطبيعية'],['Transfer without training','الانتقال دون تدريب'],['Adaptability to change','التكيف مع التغيير'],['Spontaneity','التلقائية'],['Self-help skills','مهارات الاعتماد على النفس'],['Mand ability','القدرة على الطلب'],['Tact / intraverbal','التسمية / التفاعل اللفظي'],['Overall independence','الاستقلالية العامة']];
+const ABLLS = [['A','Cooperation & reinforcer effectiveness','التعاون وفعالية المعززات'],['B','Visual performance','الأداء البصري'],['C','Receptive language','اللغة الاستقبالية'],['D','Motor imitation','التقليد الحركي'],['E','Vocal imitation','التقليد الصوتي'],['F','Requests','الطلبات'],['G','Labeling','التسمية'],['H','Intraverbal','التفاعل اللفظي'],['I','Spontaneous vocalizations','الأصوات التلقائية'],['J','Syntax & grammar','التركيب والقواعد'],['K','Play & leisure','اللعب والترفيه'],['L','Social interaction','التفاعل الاجتماعي'],['M','Group instruction','التعليم الجماعي'],['N','Classroom routines','روتين الصف'],['O','Generalized responding','الاستجابة المعممة'],['P','Reading','القراءة'],['Q','Math','الرياضيات'],['R','Writing','الكتابة'],['S','Spelling','التهجئة'],['T','Dressing','ارتداء الملابس'],['U','Eating','الأكل'],['V','Grooming','العناية الشخصية'],['W','Toileting','استخدام الحمام'],['X','Gross motor','الحركة الكبرى'],['Y','Fine motor','الحركة الدقيقة']];
+const DSM_A = [['Deficits in social-emotional reciprocity','قصور في التبادل الاجتماعي العاطفي'],['Deficits in nonverbal communicative behaviors','قصور في السلوكيات التواصلية غير اللفظية'],['Deficits in developing, maintaining and understanding relationships','قصور في تكوين العلاقات والحفاظ عليها وفهمها']];
+const DSM_B = [['Stereotyped or repetitive motor movements, speech or object use','حركات أو كلام أو استخدام أشياء نمطي/متكرر'],['Insistence on sameness, inflexible routines, ritualized patterns','الإصرار على التماثل وروتين جامد وطقوس'],['Highly restricted, fixated interests (abnormal intensity/focus)','اهتمامات شديدة التقييد والتثبيت'],['Hyper- or hypo-reactivity to sensory input or unusual sensory interests','فرط/نقص الاستجابة للمدخلات الحسية']];
+const DSM_CDE = [['Symptoms present in the early developmental period','الأعراض موجودة في مرحلة النمو المبكرة'],['Symptoms cause clinically significant impairment in functioning','الأعراض تسبب قصوراً وظيفياً مهماً إكلينيكياً'],['Not better explained by intellectual disability or global developmental delay','لا تُفسَّر بصورة أفضل بالإعاقة الذهنية أو التأخر النمائي الشامل']];
+const ART_AR = ['ب','ت','ث','ج','ح','خ','د','ذ','ر','ز','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','هـ','و','ي'];
+const ART_EN = ['p','b','m','w','h','t','d','n','k','g','f','v','s','z','sh','ch','j','l','r','th','y','ng'];
+const LANG_BANDS = [
+  [12, [['Responds to own name','يستجيب لاسمه'],['Understands "no"','يفهم كلمة "لا"']], [['Babbles with varied sounds','يناغي بأصوات متنوعة'],['Uses 1–3 words','ينطق من 1 إلى 3 كلمات']]],
+  [18, [['Follows a simple one-step command','ينفذ أمراً بسيطاً من خطوة'],['Points to familiar objects when named','يشير لأشياء مألوفة عند تسميتها']], [['Uses about 10+ words','يستخدم نحو 10 كلمات أو أكثر'],['Imitates new words','يقلّد كلمات جديدة']]],
+  [24, [['Follows two-step directions','ينفذ أمراً من خطوتين'],['Understands simple where/what questions','يفهم أسئلة أين/ماذا البسيطة']], [['Combines two words','يجمع بين كلمتين'],['Uses about 50+ words','يستخدم نحو 50 كلمة أو أكثر']]],
+  [36, [['Understands in/on/under','يفهم في/على/تحت'],['Understands who/what/where questions','يفهم أسئلة من/ماذا/أين']], [['Uses 3-word sentences','يستخدم جملاً من 3 كلمات'],['Familiar listeners understand most speech','يفهمه المقرّبون في معظم الكلام']]],
+  [48, [['Understands "why" questions and basic time concepts','يفهم أسئلة "لماذا" ومفاهيم الزمن الأساسية']], [['Tells simple stories / past events','يحكي قصصاً أو أحداثاً ماضية بسيطة'],['Uses 4–5 word sentences','يستخدم جملاً من 4–5 كلمات']]],
+  [60, [['Follows multi-step complex directions','ينفذ تعليمات معقدة متعددة الخطوات']], [['Uses mostly full grammatical sentences','يستخدم جملاً مكتملة نحوياً في الغالب'],['Strangers understand most speech','يفهمه الغرباء في معظم الكلام']]]
+];
+
+const num = (k,min,max,step,ph) => `<input type="number" data-k="${k}" min="${min}" max="${max}" step="${step||1}" value="${gv(k,'')}" ${ph?`placeholder="${ph}"`:''} class="inp">`;
+const sel = (k,opts) => `<select data-k="${k}" class="inp !w-auto">${opts.map(o=>`<option value="${o[0]}" ${String(gv(k,opts[0][0]))===String(o[0])?'selected':''}>${esc(o[1])}</option>`).join('')}</select>`;
+const chk = (k,label) => `<label class="flex items-start gap-2 text-sm py-1"><input type="checkbox" data-k="${k}" ${gv(k,false)?'checked':''} class="mt-1"><span>${esc(label)}</span></label>`;
+const rep = id => `<div class="mt-5 flex flex-wrap gap-2"><button class="btn btn-p" data-report="${id}"><i class="fa-solid fa-file-lines me-1"></i>${t('gen_report')}</button><button class="btn btn-g" data-book="${id==='speech'||id==='ssi'?'speech':'vbmapp'}"><i class="fa-solid fa-calendar-check me-1"></i>${t('book_assess')}</button></div>`;
+const T = (ar,en) => lang==='ar'?ar:en;
+
+function bVB(){
+  let h = `<div class="note">${T('أدخل درجات تجريبية على مستوى المجال (0–5 لكل مستوى، يسمح بنصف درجة). الأداة مبسطة ولا تعرض بنود المقياس الرسمي.','Enter trial domain-level scores (0–5 per level, half points allowed). This is a simplified tool and does not reproduce the official instrument items.')}</div>`;
+  h += `<h3 class="mt-5 font-bold">${T('المعالم (Milestones) — شبكة الدرجات','Milestones — score grid')}</h3><div class="overflow-x-auto"><table class="tbl mt-2"><tr><th></th>${VB_LVL.map(l=>`<th>${D(l)}</th>`).join('')}</tr>`;
+  VB_DOM.forEach((d,i)=>{ h += `<tr><td class="font-semibold">${D(d)}</td>${[0,1,2].map(l=>`<td>${num(`vb:${l}:${i}`,0,5,0.5)}</td>`).join('')}</tr>`; });
+  h += `</table></div><canvas id="ch-vb" class="mt-4 max-h-80"></canvas>`;
+  h += `<h3 class="mt-6 font-bold">${T('العوائق (Barriers) — 0 لا يوجد … 4 شديد','Barriers — 0 none … 4 severe')}</h3><div class="grid sm:grid-cols-2 gap-2 mt-2">${VB_BAR.map((b,i)=>`<div class="flex items-center justify-between gap-2 text-sm"><span>${D(b)}</span>${sel('vb:bar:'+i,[0,1,2,3,4].map(x=>[x,x]))}</div>`).join('')}</div>`;
+  h += `<h3 class="mt-6 font-bold">${T('الانتقال (Transition) — 1 ضعيف … 5 قوي','Transition — 1 weak … 5 strong')}</h3><div class="grid sm:grid-cols-2 gap-2 mt-2">${VB_TRN.map((b,i)=>`<div class="flex items-center justify-between gap-2 text-sm"><span>${D(b)}</span>${sel('vb:trn:'+i,[1,2,3,4,5].map(x=>[x,x]))}</div>`).join('')}</div>`;
+  h += `<h3 class="mt-6 font-bold">EESA — ${T('المهارات الصوتية المبكرة (درجات تجريبية 0–10 لكل مجموعة)','Early Echoic Skills (trial scores 0–10 per group)')}</h3><div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-2">${[1,2,3,4,5].map(g=>`<label class="text-sm">${T('المجموعة','Group')} ${g}${num('vb:ee:'+g,0,10,1)}</label>`).join('')}</div>`;
+  h += `<div id="res-vb" class="mt-5 p-4 rounded-xl bg-brand-50 border border-brand-100 text-sm"></div>` + rep('vb');
+  return h;
+}
+function bABLLS(){
+  let h = `<div class="note">${T('حرّك الشريط لتقدير نسبة المهارات المكتسبة في كل مجال (0–100%).','Move the slider to estimate the percent of skills acquired in each domain (0–100%).')}</div><div class="grid md:grid-cols-2 gap-x-8 gap-y-2 mt-4">`;
+  ABLLS.forEach((a,i)=>{ h += `<div class="text-sm"><div class="flex justify-between"><span><b>${a[0]}</b> ${D([a[1],a[2]])}</span><span id="ab-v-${i}" class="font-bold text-brand-700"></span></div>
+    <input type="range" min="0" max="100" step="5" data-k="ab:${i}" value="${gv('ab:'+i,0)}" class="w-full accent-teal-600"><div class="h-2 bg-slate-200 rounded"><div id="ab-b-${i}" class="h-2 rounded bg-brand-500" style="width:0"></div></div></div>`; });
+  h += `</div><canvas id="ch-ablls" class="mt-6 max-h-96"></canvas><div id="res-ablls" class="mt-5 p-4 rounded-xl bg-brand-50 border border-brand-100 text-sm"></div>` + rep('ablls');
+  return h;
+}
+function bDSM(){
+  let h = `<div class="note">${T('قائمة مرجعية للفرز المبدئي وفق معايير DSM-5 — ليست أداة تشخيص.','A checklist for preliminary screening against DSM-5 criteria — not a diagnostic tool.')}</div>`;
+  h += `<h3 class="mt-4 font-bold">${T('A. قصور مستمر في التواصل الاجتماعي (يلزم الثلاثة)','A. Persistent social communication deficits (all three required)')}</h3>${DSM_A.map((c,i)=>chk('dsm:a'+i,D(c))).join('')}`;
+  h += `<h3 class="mt-4 font-bold">${T('B. أنماط سلوك مقيّدة ومتكررة (يلزم اثنان على الأقل)','B. Restricted, repetitive behaviors (at least two required)')}</h3>${DSM_B.map((c,i)=>chk('dsm:b'+i,D(c))).join('')}`;
+  h += `<h3 class="mt-4 font-bold">C – E</h3>${DSM_CDE.map((c,i)=>chk('dsm:c'+i,D(c))).join('')}`;
+  const lv = [[1,T('المستوى 1: يتطلب دعماً','Level 1: requiring support')],[2,T('المستوى 2: يتطلب دعماً كبيراً','Level 2: requiring substantial support')],[3,T('المستوى 3: يتطلب دعماً كبيراً جداً','Level 3: requiring very substantial support')]];
+  h += `<div class="grid sm:grid-cols-2 gap-3 mt-4"><label class="text-sm">${T('مستوى الدعم — التواصل الاجتماعي','Support level — social communication')}${sel('dsm:lvA',lv)}</label><label class="text-sm">${T('مستوى الدعم — السلوك المقيّد/المتكرر','Support level — restricted/repetitive behavior')}${sel('dsm:lvB',lv)}</label></div>`;
+  h += `<div id="res-dsm" class="mt-5 p-4 rounded-xl bg-brand-50 border border-brand-100 text-sm"></div>` + rep('dsm');
+  return h;
+}
+function bSpeech(){
+  const sounds = lang==='ar' ? ART_AR : ART_EN;
+  let h = `<div class="note">${T('مؤشرات إرشادية للفرز فقط. التقييم الرسمي يتطلب أخصائي نطق ولغة.','Indicative screening only. A formal evaluation requires a speech-language pathologist.')}</div>`;
+  h += `<h3 class="mt-4 font-bold">${T('فحص مخارج الحروف: علّم الأصوات التي ينطقها الطفل خطأً','Articulation screening: tick sounds the child produces incorrectly')}</h3><div class="flex flex-wrap gap-2 mt-2">${sounds.map((s,i)=>`<label class="flex items-center gap-1 px-3 py-1 rounded-lg border bg-white text-lg"><input type="checkbox" data-k="sp:art:${lang}:${i}" ${gv(`sp:art:${lang}:${i}`,false)?'checked':''}>${s}</label>`).join('')}</div>`;
+  h += `<h3 class="mt-6 font-bold">${T('تطور اللغة','Language development')}</h3><label class="text-sm">${T('عمر الطفل (بالأشهر)','Child age (months)')} <input type="number" data-k="sp:age" min="6" max="96" value="${gv('sp:age','')}" class="inp !w-28 inline-block"></label>`;
+  LANG_BANDS.forEach((b,bi)=>{ h += `<div class="mt-3 p-3 rounded-xl border bg-white"><b>${b[0]} ${T('شهراً','months')}</b><div class="grid sm:grid-cols-2 gap-4 mt-1"><div><u class="text-xs">${T('استقبالية','Receptive')}</u>${b[1].map((x,i)=>chk(`sp:r:${bi}:${i}`,D(x))).join('')}</div><div><u class="text-xs">${T('تعبيرية','Expressive')}</u>${b[2].map((x,i)=>chk(`sp:e:${bi}:${i}`,D(x))).join('')}</div></div></div>`; });
+  h += `<div id="res-speech" class="mt-5 p-4 rounded-xl bg-brand-50 border border-brand-100 text-sm"></div>` + rep('speech');
+  return h;
+}
+function bSSI(){
+  let h = `<div class="note">${T('تقدير مبسط مستوحى من مقياس شدة التلعثم (SSI)، وليس مكافئاً لمعايير SSI-4 الرسمية.','A simplified estimate inspired by the Stuttering Severity Instrument (SSI); not equivalent to official SSI-4 norms.')}</div>`;
+  h += `<div class="grid sm:grid-cols-2 gap-3 mt-4"><label class="text-sm">${T('عدد المقاطع الكلي في العيّنة','Total syllables in the sample')}${num('ssi:syl',0,5000,1)}</label><label class="text-sm">${T('عدد المقاطع المتلعثمة','Stuttered syllables')}${num('ssi:st',0,5000,1)}</label></div>`;
+  h += `<h3 class="mt-4 font-bold">${T('مدة أطول ثلاث لحظات تلعثم (بالثواني)','Duration of the three longest stuttering events (seconds)')}</h3><div class="grid grid-cols-3 gap-2 mt-1">${[1,2,3].map(i=>num('ssi:d'+i,0,120,0.1)).join('')}</div>`;
+  h += `<h3 class="mt-4 font-bold">${T('الحركات المصاحبة (0 لا يوجد … 5 شديد)','Physical concomitants (0 none … 5 severe)')}</h3><div class="grid sm:grid-cols-2 gap-2 mt-1">${[['Distracting sounds','أصوات مشتتة'],['Facial grimaces','تكشيرات الوجه'],['Head movements','حركات الرأس'],['Extremity movements','حركات الأطراف']].map((c,i)=>`<div class="flex justify-between items-center text-sm gap-2"><span>${D(c)}</span>${sel('ssi:c'+i,[0,1,2,3,4,5].map(x=>[x,x]))}</div>`).join('')}</div>`;
+  h += `<div id="res-ssi" class="mt-5 p-4 rounded-xl bg-brand-50 border border-brand-100 text-sm"></div>` + rep('ssi');
+  return h;
+}
+const FUNCS = [['tangible',['Access to tangible / activity','الحصول على شيء/نشاط']],['escape',['Escape / avoid demand','الهروب/تجنب مطلب']],['attention',['Gain attention','لفت الانتباه']],['sensory',['Automatic / sensory','تعزيز تلقائي/حسي']]];
+function bFBA(){
+  const f = (k,label,rows) => `<label class="text-sm block">${label}${rows?`<textarea data-k="${k}" rows="${rows}" class="inp">${esc(gv(k,''))}</textarea>`:`<input data-k="${k}" value="${esc(gv(k,''))}" class="inp">`}</label>`;
+  let h = `<div class="note">${T('نموذج FBA وتوليد خطة BIP أولية قابلة للتعديل. الخطة الفعلية تتطلب محللاً سلوكياً مؤهلاً وموافقة الأسرة.','FBA form and a draft, editable BIP. A real plan requires a qualified behavior analyst and family consent.')}</div><div class="grid gap-3 mt-4">`;
+  h += f('fba:target',T('السلوك المستهدف','Target behavior')) + f('fba:def',T('التعريف الإجرائي (ماذا يبدو السلوك وماذا لا يشمل)','Operational definition (what it looks like / does not include)'),2) + f('fba:setting',T('المكان والأوقات الأكثر حدوثاً','Settings / times most likely'));
+  h += `<h3 class="font-bold mt-2">ABC</h3>` + [1,2,3].map(i=>`<div class="grid sm:grid-cols-3 gap-2">${f('fba:a'+i,T('المسبّب','Antecedent'))}${f('fba:b'+i,T('السلوك','Behavior'))}${f('fba:c'+i,T('النتيجة','Consequence'))}</div>`).join('');
+  h += `<label class="text-sm">${T('الوظيفة المرجّحة','Hypothesized function')}${sel('fba:func',FUNCS.map(x=>[x[0],D(x[1])]))}</label>`;
+  h += f('fba:repl',T('السلوك البديل المقترح','Proposed replacement behavior')) + f('fba:goal',T('معيار النجاح (مثال: أقل من مرتين أسبوعياً لمدة 3 أسابيع)','Success criterion (e.g., fewer than 2 per week for 3 weeks)'));
+  h += `</div><div class="mt-4 flex flex-wrap gap-2"><button class="btn btn-p" id="bipGen">${T('توليد خطة BIP','Generate BIP')}</button><button class="btn btn-o" id="bipCopy">${T('نسخ','Copy')}</button><button class="btn btn-g" data-book="iep">${T('احجز تصميم برنامج فردي','Book IEP design')}</button></div><textarea id="bipOut" rows="14" class="inp mt-3 font-mono text-xs"></textarea>`;
+  return h;
+}
+function genBIP(){
+  const fn = gv('fba:func','tangible'), ar = lang==='ar';
+  const strat = {
+    tangible:[ar?'إتاحة المعزّزات المفضلة بانتظام وبشكل غير مشروط.':'Provide preferred items on a regular, noncontingent basis.', ar?'تعليم الطلب المناسب (كلمة/إشارة/صورة) وتعزيزه فوراً.':'Teach an appropriate request (word/sign/picture) and reinforce immediately.', ar?'عدم تسليم المطلوب بعد السلوك المشكل.':'Do not deliver the item following the problem behavior.'],
+    escape:[ar?'تقليل صعوبة المهمة أو تجزئتها ومزج مهام سهلة.':'Reduce task difficulty or chunk tasks and interleave easy items.', ar?'تعليم طلب استراحة أو مساعدة وتعزيزه فوراً.':'Teach requesting a break or help and reinforce immediately.', ar?'إكمال المهمة بتلقين ولطف دون إلغائها بعد السلوك المشكل.':'Calmly guide task completion with prompting; do not remove the task after the problem behavior.'],
+    attention:[ar?'تقديم انتباه إيجابي منتظم قبل الحاجة إليه.':'Deliver regular positive attention before it is sought.', ar?'تعليم طلب الانتباه بطريقة مناسبة وتعزيزه.':'Teach an appropriate way to request attention and reinforce it.', ar?'تقليل الانتباه الموجّه للسلوك المشكل مع ضمان السلامة.':'Minimize attention to the problem behavior while ensuring safety.'],
+    sensory:[ar?'إتاحة بدائل حسية مناسبة وأنشطة مُثرية.':'Provide appropriate sensory alternatives and enriched activities.', ar?'تعليم سلوك بديل يعطي مدخلاً حسياً مماثلاً.':'Teach a replacement behavior that provides similar sensory input.', ar?'تعديل البيئة لضمان السلامة وتقليل فرص السلوك.':'Modify the environment for safety and to reduce opportunities for the behavior.']
+  }[fn];
+  const fname = D(FUNCS.find(x=>x[0]===fn)[1]);
+  const rows=[1,2,3].filter(i=>gv('fba:a'+i)||gv('fba:b'+i)||gv('fba:c'+i)).map(i=>`  ${i}) A: ${gv('fba:a'+i,'-')} | B: ${gv('fba:b'+i,'-')} | C: ${gv('fba:c'+i,'-')}`).join('\n') || '  -';
+  const txt = ar
+   ? `خطة التدخل السلوكي (BIP) — مسودة\n\nالسلوك المستهدف: ${gv('fba:target','-')}\nالتعريف الإجرائي: ${gv('fba:def','-')}\nالمكان/الأوقات: ${gv('fba:setting','-')}\n\nبيانات ABC:\n${rows}\n\nالوظيفة المرجّحة: ${fname}\nالسلوك البديل: ${gv('fba:repl','-')}\n\nاستراتيجيات الوقاية (قبل السلوك):\n- ${strat[0]}\n\nتعليم السلوك البديل:\n- ${strat[1]}\n\nاستراتيجية الاستجابة (بعد السلوك):\n- ${strat[2]}\n\nجمع البيانات: استمارة ABC + التكرار/المدة يومياً، ومراجعة أسبوعية.\nمعيار النجاح: ${gv('fba:goal','-')}\n\nملاحظة: مسودة تتطلب مراجعة محلل سلوك مؤهل وموافقة الأسرة.`
+   : `Behavior Intervention Plan (BIP) — Draft\n\nTarget behavior: ${gv('fba:target','-')}\nOperational definition: ${gv('fba:def','-')}\nSettings/times: ${gv('fba:setting','-')}\n\nABC data:\n${rows}\n\nHypothesized function: ${fname}\nReplacement behavior: ${gv('fba:repl','-')}\n\nPrevention strategies (antecedent):\n- ${strat[0]}\n\nTeaching the replacement:\n- ${strat[1]}\n\nResponse strategy (consequence):\n- ${strat[2]}\n\nData collection: ABC sheet + frequency/duration daily, weekly review.\nSuccess criterion: ${gv('fba:goal','-')}\n\nNote: draft requiring review by a qualified behavior analyst and family consent.`;
+  $('#bipOut').value = txt;
+}
+
+/* ----- calculators ----- */
+const bg = (v,max) => `hsl(${Math.max(0,Math.min(1,v/max))*120} 60% 88%)`;
+function calcVB(){
+  const lv = [0,0,0];
+  $$('[data-k^="vb:"][type="number"]').forEach(el=>{ const p = el.dataset.k.split(':'); if(/^[0-2]$/.test(p[1])){ const v=parseFloat(el.value)||0; lv[+p[1]] += v; el.style.background = bg(v,5);} });
+  const max = VB_DOM.length*5, total = lv.reduce((a,b)=>a+b,0);
+  let bar=0; VB_BAR.forEach((_,i)=>bar+=+gv('vb:bar:'+i,0));
+  let tr=0; VB_TRN.forEach((_,i)=>tr+=+gv('vb:trn:'+i,1));
+  let ee=0; [1,2,3,4,5].forEach(g=>ee+=+gv('vb:ee:'+g,0));
+  $('#res-vb').innerHTML = `<b>${T('ملخص النتائج التجريبية','Trial results summary')}</b><ul class="mt-1 list-disc ms-5 space-y-1">
+    ${VB_LVL.map((l,i)=>`<li>${D(l)}: <b>${lv[i]}</b> / ${max}</li>`).join('')}
+    <li>${T('مجموع المعالم','Milestones total')}: <b>${total}</b> / ${max*3}</li>
+    <li>${T('مجموع العوائق','Barriers total')}: <b>${bar}</b> / ${VB_BAR.length*4} ${bar>=48?'— '+T('عوائق مرتفعة تستحق التدخل','high barriers; target for intervention'):''}</li>
+    <li>${T('مجموع الانتقال','Transition total')}: <b>${tr}</b> / ${VB_TRN.length*5}</li>
+    <li>EESA: <b>${ee}</b> / 50</li></ul>`;
+  drawChart('ch-vb','bar',VB_DOM.map(D),VB_LVL.map((l,i)=>({label:D(l),data:VB_DOM.map((_,d)=>+gv(`vb:${i}:${d}`,0)),backgroundColor:['#2a9d8f','#f4a261','#6366f1'][i]})),{scales:{y:{min:0,max:5}}});
+}
+function calcABLLS(){
+  let sum=0;
+  ABLLS.forEach((_,i)=>{ const v=+gv('ab:'+i,0); sum+=v; $('#ab-v-'+i).textContent=v+'%'; $('#ab-b-'+i).style.width=v+'%'; });
+  const avg = Math.round(sum/ABLLS.length);
+  const low = ABLLS.map((a,i)=>[a,+gv('ab:'+i,0)]).sort((x,y)=>x[1]-y[1]).slice(0,3).map(x=>x[0][0]+' '+D([x[0][1],x[0][2]])+' ('+x[1]+'%)').join('، ');
+  $('#res-ablls').innerHTML = `<b>${T('المتوسط العام للمهارات المكتسبة','Overall average skills acquired')}: ${avg}%</b><p class="mt-1">${T('أضعف المجالات (أولوية للتدخل)','Weakest areas (intervention priority)')}: ${low}</p>`;
+  drawChart('ch-ablls','radar',ABLLS.map(a=>a[0]),[{label:'%',data:ABLLS.map((_,i)=>+gv('ab:'+i,0)),backgroundColor:'rgba(42,157,143,.25)',borderColor:'#2a9d8f'}],{scales:{r:{min:0,max:100}}});
+}
+function calcDSM(){
+  const A = [0,1,2].filter(i=>gv('dsm:a'+i,false)).length, B = [0,1,2,3].filter(i=>gv('dsm:b'+i,false)).length;
+  const C = [0,1,2].every(i=>gv('dsm:c'+i,false));
+  const met = A===3 && B>=2 && C, lvl = Math.max(+gv('dsm:lvA',1),+gv('dsm:lvB',1));
+  $('#res-dsm').innerHTML = `<p>A: <b>${A}/3</b> · B: <b>${B}/4</b> · C–E: <b>${C?T('مستوفاة','met'):T('غير مكتملة','incomplete')}</b></p>
+   <p class="mt-2 font-bold ${met?'text-orange-700':'text-slate-700'}">${met?T('النمط يتوافق مع معايير التوحد في الفرز المبدئي — يُنصح بإحالة لتقييم تشخيصي رسمي.','Pattern is consistent with ASD criteria on preliminary screening — referral for formal diagnostic evaluation is advised.'):T('النمط لا يستوفي معايير الفرز كاملة. إن استمر القلق فاطلب تقييماً متخصصاً.','Pattern does not meet the full screening criteria. If concerns persist, seek a specialist evaluation.')}</p>
+   ${met?`<p class="mt-1">${T('مستوى الدعم المقترح (الأعلى بين المجالين)','Suggested support level (higher of the two domains)')}: <b>${lvl}</b></p>`:''}`;
+}
+function calcSpeech(){
+  const sounds = lang==='ar' ? ART_AR : ART_EN;
+  const errs = sounds.filter((_,i)=>gv(`sp:art:${lang}:${i}`,false));
+  const acc = Math.round((1-errs.length/sounds.length)*100);
+  const age = +gv('sp:age',0); let unmetR=0,unmetE=0,exp=0;
+  LANG_BANDS.forEach((b,bi)=>{ if(age && b[0]<=age){ b[1].forEach((_,i)=>{exp++; if(!gv(`sp:r:${bi}:${i}`,false)) unmetR++;}); b[2].forEach((_,i)=>{exp++; if(!gv(`sp:e:${bi}:${i}`,false)) unmetE++;}); } });
+  $('#res-speech').innerHTML = `<p>${T('دقة النطق في الفحص','Articulation screening accuracy')}: <b>${acc}%</b>${errs.length?` — ${T('أصوات بها خطأ','error sounds')}: <b>${errs.join(' ')}</b>`:''}</p>
+   <p class="mt-1">${age?`${T('بنود لغوية غير محققة لعمر','Unmet language items up to age')} ${age} ${T('شهراً','months')}: ${T('استقبالية','receptive')} <b>${unmetR}</b>، ${T('تعبيرية','expressive')} <b>${unmetE}</b> ${T('من','of')} ${exp}`:T('أدخل عمر الطفل لمقارنة اللغة.','Enter the child\'s age to compare language.')}</p>
+   <p class="mt-1 font-semibold">${(unmetR+unmetE)>=3||errs.length>=6?T('مؤشرات تستدعي تقييماً متخصصاً في النطق واللغة.','Indicators that warrant a specialist speech-language evaluation.'):T('لا مؤشرات قوية في هذا الفرز المبدئي.','No strong indicators in this preliminary screen.')}</p>`;
+}
+function calcSSI(){
+  const syl=+gv('ssi:syl',0), st=+gv('ssi:st',0), pct = syl? st/syl*100 : 0;
+  const fS = pct<1?1:pct<2?2:pct<3?3:pct<5?4:pct<7?5:pct<10?6:pct<15?7:pct<20?8:9;
+  const ds=[gv('ssi:d1',0),gv('ssi:d2',0),gv('ssi:d3',0)].map(Number), avg=(ds[0]+ds[1]+ds[2])/3;
+  const dS = avg<0.5?1:avg<1?2:avg<2?3:avg<5?4:avg<10?5:avg<30?6:avg<60?7:8;
+  let cS=0; for(let i=0;i<4;i++) cS+=+gv('ssi:c'+i,0);
+  const tot=fS+dS+cS;
+  const sev = tot<=8?T('خفيف جداً','Very mild'):tot<=14?T('خفيف','Mild'):tot<=20?T('متوسط','Moderate'):tot<=27?T('شديد','Severe'):T('شديد جداً','Very severe');
+  $('#res-ssi').innerHTML = `<ul class="list-disc ms-5 space-y-1"><li>${T('نسبة المقاطع المتلعثمة','% syllables stuttered')}: <b>${pct.toFixed(1)}%</b> → ${T('درجة التكرار','frequency score')} <b>${fS}</b></li>
+   <li>${T('متوسط أطول 3 لحظات','Mean of 3 longest events')}: <b>${avg.toFixed(1)} s</b> → ${T('درجة المدة','duration score')} <b>${dS}</b></li><li>${T('الحركات المصاحبة','Physical concomitants')}: <b>${cS}</b> / 20</li></ul>
+   <p class="mt-2 font-bold">${T('المجموع','Total')}: ${tot} — ${T('الشدة التقديرية','Estimated severity')}: ${sev}</p>`;
+}
+function updateResults(){
+  ({vb:calcVB, ablls:calcABLLS, dsm:calcDSM, speech:calcSpeech, ssi:calcSSI})[curTab]?.();
+}
+const TABS = [['vb','t_vb',bVB],['ablls','t_ablls',bABLLS],['dsm','t_dsm',bDSM],['speech','t_speech',bSpeech],['ssi','t_ssi',bSSI],['fba','t_fba',bFBA]];
+function renderAssess(){
+  killCharts();
+  $('#asTabs').innerHTML = TABS.map(x=>`<button data-tab="${x[0]}" class="px-4 py-2 rounded-full border text-sm font-bold ${x[0]===curTab?'tab-on':'bg-white text-slate-600 border-slate-300'}">${t(x[1])}</button>`).join('');
+  $('#asBody').innerHTML = TABS.find(x=>x[0]===curTab)[2]();
+  $$('[data-tab]').forEach(b=>b.onclick=()=>{ curTab=b.dataset.tab; renderAssess(); });
+  $$('[data-report]').forEach(b=>b.onclick=()=>openReport(b.dataset.report));
+  if (curTab==='fba'){ $('#bipGen').onclick=genBIP; $('#bipCopy').onclick=()=>{ $('#bipOut').select(); try{document.execCommand('copy');}catch(e){} }; }
+  bindBook(); updateResults();
+}
+function openReport(tab){
+  const res = $('#res-'+tab); if(!res) return;
+  const cv = $$('#asBody canvas').map(c=>{ try{return `<img src="${c.toDataURL()}" style="max-width:100%">`}catch(e){return ''} }).join('');
+  const title = t(TABS.find(x=>x[0]===tab)[1]);
+  const dir = lang==='ar'?'rtl':'ltr';
+  const w = window.open('','_blank'); if(!w) return;
+  w.document.write(`<!DOCTYPE html><html dir="${dir}" lang="${lang}"><head><meta charset="utf-8"><title>${title}</title><style>body{font-family:Arial,sans-serif;margin:28px;line-height:1.7}h1{color:#1b6b62}.n{font-size:12px;color:#7c2d12;border:1px solid #fed7aa;background:#fff7ed;padding:8px;border-radius:8px}</style></head><body>
+    <h1>${title} — Mohamed Farag Abo Zaid | ABA Praxis</h1><p>${new Date().toLocaleDateString(lang==='ar'?'ar-EG':'en-GB')}</p>${res.innerHTML}${cv}<p class="n">${t('assess_disclaimer')}</p><script>setTimeout(function(){print()},500)<\/script></body></html>`);
+  w.document.close();
+}
+
+/* =====================================================================
+   6) SERVICES, CHECKOUT & FORM DELIVERY
+   ===================================================================== */
+const SYM = {SAR:'ر.س', EGP:'ج.م', USD:'$'};
+function priceOf(id){ const p = CONFIG.prices[id] && CONFIG.prices[id][currency]; return p ? `${p} ${SYM[currency]}` : t('price_contact'); }
+function renderServices(){
+  $('#serviceGrid').innerHTML = services.map(s=>`<div class="card bg-white rounded-2xl border border-brand-100 p-5 flex flex-col">
+    <i class="fa-solid ${s.icon} text-3xl text-brand-600"></i><h3 class="mt-3 font-bold text-brand-900">${esc(s['title_'+lang])}</h3>
+    <p class="text-sm text-slate-600 mt-2 flex-1">${esc(s['desc_'+lang])}</p><p class="mt-3 font-extrabold text-brand-700">${priceOf(s.id)}</p>
+    <button data-book="${s.id}" class="btn btn-p mt-3">${t('book_now')}</button></div>`).join('');
+  bindBook();
+}
+function bindBook(){ $$('[data-book]').forEach(b=>{ b.onclick = e => { if(b.tagName==='A') e.preventDefault(); openCheckout(b.dataset.book); }; }); }
+
+function copyBtn(v){ return v ? `<button type="button" data-copy="${esc(v)}" class="ms-2 text-xs px-2 py-0.5 rounded border">${t('co_copy')}</button>` : `<span class="text-xs text-orange-600">${t('co_notset')}</span>`; }
+function openCheckout(id){
+  const s = services.find(x=>x.id===id) || services[0];
+  const b = CONFIG.bank;
+  showModal(`<h3 class="text-xl font-extrabold text-brand-900 pe-8">${t('co_title')}</h3>
+   <p class="mt-2 text-sm"><b>${t('co_service')}:</b> ${esc(s['title_'+lang])}</p>
+   <div class="flex items-center gap-2 mt-2 text-sm"><b>${t('co_price')}:</b> <span id="coPrice" class="font-extrabold text-brand-700"></span>
+     <select id="coCur" class="inp !w-auto !py-1"><option value="SAR">SAR</option><option value="EGP">EGP</option><option value="USD">USD</option></select></div>
+   <div class="mt-4 p-3 rounded-xl bg-brand-50 border border-brand-100 text-sm space-y-1"><b>${t('co_bank')}</b>
+     <div>${t('co_holder')}: ${esc(b.holder)||''}${copyBtn(b.holder)}</div><div>${t('co_bankname')}: ${esc(b.bankName)||''}${copyBtn(b.bankName)}</div>
+     <div>${t('co_iban')}: <span dir="ltr">${esc(b.iban)}</span>${copyBtn(b.iban)}</div><div>${t('co_acc')}: <span dir="ltr">${esc(b.account)}</span>${copyBtn(b.account)}</div></div>
+   <div class="mt-3 p-3 rounded-xl bg-orange-50 border border-orange-100 text-sm space-y-1"><b>${t('co_wallet')}</b>
+     ${CONFIG.wallets.map(w=>`<div>${esc(w.name)}: <span dir="ltr">${esc(w.number)}</span>${copyBtn(w.number)}</div>`).join('')}</div>
+   <form id="coForm" class="mt-4 grid gap-3">
+     <input name="name" required class="inp" placeholder="${t('co_name')}"><input name="phone" required class="inp" placeholder="${t('co_phone')}" dir="ltr">
+     <input name="email" type="email" required class="inp" placeholder="${t('co_email')}" dir="ltr">
+     <div class="grid grid-cols-2 gap-2"><label class="text-xs">${t('co_date')}<input name="date" type="date" required class="inp"></label><label class="text-xs">${t('co_time')}<input name="time" type="time" required class="inp"></label></div>
+     <input name="ref" class="inp" placeholder="${t('co_ref')}" dir="ltr">
+     <label class="text-xs">${t('co_receipt')}<input name="receipt" type="file" accept="image/*,application/pdf" class="inp"></label>
+     <label class="flex items-start gap-2 text-sm"><input type="checkbox" required class="mt-1"><span>${t('co_consent')}</span></label>
+     <p id="coMsg" class="text-sm text-red-600"></p>
+     <button class="btn btn-p">${t('co_confirm')}</button></form>`);
+  const upd = () => { $('#coPrice').textContent = priceOf(s.id); };
+  $('#coCur').value = currency; $('#coCur').onchange = e => { currency = e.target.value; $('#curSel').value = currency; upd(); renderServices(); };
+  upd();
+  $$('[data-copy]').forEach(c=>c.onclick=()=>{ navigator.clipboard && navigator.clipboard.writeText(c.dataset.copy); c.textContent=t('co_copied'); });
+  $('#coForm').onsubmit = async e => {
+    e.preventDefault();
+    const fd = new FormData(e.target), f = e.target.receipt.files[0];
+    if (!fd.get('ref') && !f) { $('#coMsg').textContent = t('co_need'); return; }
+    if (f && f.size > 5*1024*1024) { $('#coMsg').textContent = 'Max 5MB'; return; }
+    const lines = [`Service: ${s.title_en} / ${s.title_ar}`, `Price: ${priceOf(s.id)} (${currency})`, `Name: ${fd.get('name')}`, `Phone: ${fd.get('phone')}`, `Email: ${fd.get('email')}`, `Preferred: ${fd.get('date')} ${fd.get('time')}`, `Reference: ${fd.get('ref')||'-'}`, `Receipt: ${f?f.name:'-'}`];
+    const out = new FormData();
+    out.append('_subject','Booking: '+s.title_en); out.append('_captcha','false'); out.append('_template','table');
+    lines.forEach(l=>{ const i=l.indexOf(':'); out.append(l.slice(0,i), l.slice(i+1).trim()); });
+    if (f) out.append('attachment', f);
+    await deliver(out, lines.join('\n'), 'Booking: '+s.title_en);
+    $('#coMsg').className='text-sm text-green-700'; $('#coMsg').textContent = t('co_done');
+    window.open(waLink(`${t('wa_ctx').services}\n\n${lines.join('\n')}`),'_blank');
+  };
+}
+async function deliver(formData, plainText, subject){          // FormSubmit (no backend) with mailto fallback
+  try {
+    const r = await fetch('https://formsubmit.co/ajax/'+CONFIG.email, { method:'POST', body:formData, headers:{Accept:'application/json'} });
+    const j = await r.json(); if (r.ok && (j.success===true || j.success==='true')) return true;
+    throw new Error('fail');
+  } catch(err){
+    location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(plainText)}`;
+    return false;
+  }
+}
+
+/* =====================================================================
+   7) SOCIAL, LANGUAGE, NAVIGATION
+   ===================================================================== */
+function renderSocial(){
+  const defs = [['whatsapp','fa-brands fa-whatsapp','#16a34a'],['youtube','fa-brands fa-youtube','#dc2626'],['facebook','fa-brands fa-facebook-f','#2563eb'],['instagram','fa-brands fa-instagram','#db2777'],['x','fa-brands fa-x-twitter','#111'],['linkedin','fa-brands fa-linkedin-in','#0a66c2'],['telegram','fa-brands fa-telegram','#0ea5e9'],['tiktok','fa-brands fa-tiktok','#111']];
+  $('#socialBar').innerHTML = defs.map(d=>{
+    const url = d[0]==='whatsapp' ? waLink(t('wa_default')) : CONFIG.social[d[0]];
+    return url ? `<a href="${esc(url)}" target="_blank" rel="noopener" aria-label="${d[0]}" class="w-11 h-11 rounded-full bg-white flex items-center justify-center text-xl hover:scale-110 transition" style="color:${d[2]}"><i class="${d[1]}"></i></a>`
+               : `<span title="${lang==='ar'?'قريباً':'Coming soon'}" aria-label="${d[0]}" class="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center text-xl text-white/60"><i class="${d[1]}"></i></span>`;
+  }).join('');
+}
+function setWa(){ $$('[data-wa]').forEach(a => a.href = waLink(waCtxMsg())); }
+function applyLang(){
+  const html = document.documentElement;
+  html.lang = lang; html.dir = lang==='ar' ? 'rtl' : 'ltr';
+  document.title = lang==='ar' ? 'محمد فرج أبوزيد | تحليل السلوك التطبيقي - ABA Praxis' : 'Mohamed Farag Abo Zaid | ABA Praxis - Applied Behavior Analysis';
+  $$('[data-i18n]').forEach(e => e.textContent = t(e.dataset.i18n));
+  $$('[data-i18n-ph]').forEach(e => e.placeholder = t(e.dataset.i18nPh));
+  $('#langBtn').textContent = t('lang_btn');
+  setWa();
+  $('#waFloat').style.cssText = lang==='ar' ? 'left:1.25rem;right:auto' : 'right:1.25rem;left:auto';
+  try { localStorage.setItem('lang', lang); } catch(e){}
+  renderCourses(); renderCats(); renderArticles(); renderGallery(); renderSheets(); renderAssess(); renderServices(); renderSocial(); closeModal();
+}
+$('#langBtn').onclick = () => { lang = lang==='ar' ? 'en' : 'ar'; applyLang(); };
+$('#menuBtn').onclick = () => $('#mobileMenu').classList.toggle('hidden');
+$$('#mobileMenu a').forEach(a => a.onclick = () => $('#mobileMenu').classList.add('hidden'));
+$('#modalClose').onclick = closeModal;
+$('#modal').onclick = e => { if(e.target.id==='modal') closeModal(); };
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+$('#searchBox').oninput = e => { query = e.target.value; renderArticles(); };
+$('#curSel').onchange = e => { currency = e.target.value; renderServices(); };
+// assessment inputs (delegated)
+const onField = e => { const el = e.target; if(!el.dataset || !el.dataset.k) return;
+  S[el.dataset.k] = el.type==='checkbox' ? el.checked : (el.type==='number'||el.type==='range') ? (el.value===''?undefined:parseFloat(el.value)) : (el.tagName==='SELECT' && /^\d+$/.test(el.value)) ? parseFloat(el.value) : el.value;
+  if (S[el.dataset.k]===undefined) delete S[el.dataset.k];
+  updateResults(); };
+document.addEventListener('input', onField); document.addEventListener('change', onField);
+// contextual WhatsApp message by visible section
+if ('IntersectionObserver' in window){
+  const io = new IntersectionObserver(es => { es.forEach(en => { if(en.isIntersecting){ waCtx = en.target.dataset.ctx; setWa(); } }); }, {rootMargin:'-45% 0px -50% 0px'});
+  $$('[data-ctx]').forEach(s => io.observe(s));
+}
+// contact form
+$('#contactForm').onsubmit = async e => {
+  e.preventDefault();
+  const name=$('#fName').value, email=$('#fEmail').value, msg=$('#fMsg').value, out=new FormData();
+  out.append('_subject','Contact: '+name); out.append('_captcha','false'); out.append('name',name); out.append('email',email); out.append('message',msg);
+  const ok = await deliver(out, `${msg}\n\n${name}\n${email}`, 'ABA Praxis - '+name);
+  $('#formStatus').textContent = ok ? t('sent') : t('send_fail');
+  if (ok) e.target.reset();
+};
+$('#yr').textContent = new Date().getFullYear();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+/* =====================================================================
+   8) ADMIN DASHBOARD (no server, free)
+   - Open with the gear icon in the footer or with the address ending in #admin
+   - Edits are saved as a draft in THIS browser and shown live.
+   - "Export content.json" → put that file next to index.html when you publish
+     and every visitor sees your changes.
+   ===================================================================== */
+(function(){
+  const LS = 'abaDraft', PWK = 'abaAdminPw';
+  const arrs = { courses, articles, gallery, services };
+  const CFG_KEYS = ['email','whatsappNumber','prices','bank','wallets','social'];
+  const TXT_KEYS = ['hero_kicker','hero_title','hero_role','hero_desc','hero_cta1','hero_cta2','hero_cta3','pill1','pill2','pill3','pill4','courses_h','courses_sub','articles_h','articles_sub','toolkit_h','toolkit_sub','assess_h','assess_sub','assess_disclaimer','services_h','services_sub','contact_h','contact_sub','footer'];
+  const clone = o => JSON.parse(JSON.stringify(o));
+  const lsGet = k => { try { return localStorage.getItem(k); } catch(e){ return null; } };
+  const lsSet = (k,v) => { try { localStorage.setItem(k,v); return true; } catch(e){ return false; } };
+
+  function snapshot(){
+    const c = { config:{}, i18n:{ar:{},en:{}} };
+    CFG_KEYS.forEach(k => c.config[k] = CONFIG[k]);
+    for (const k in arrs) c[k] = arrs[k];
+    TXT_KEYS.forEach(k => { c.i18n.ar[k] = i18n.ar[k]; c.i18n.en[k] = i18n.en[k]; });
+    return clone(c);
+  }
+  const DEFAULTS = snapshot();
+  function apply(c){
+    if (!c || typeof c !== 'object') return;
+    for (const k in arrs) if (Array.isArray(c[k])) { arrs[k].length = 0; arrs[k].push(...c[k]); }
+    if (c.config) CFG_KEYS.forEach(k => { if (c.config[k] !== undefined) CONFIG[k] = c.config[k]; });
+    if (c.i18n) ['ar','en'].forEach(l => Object.assign(i18n[l], c.i18n[l] || {}));
+  }
+  let saveTimer;
+  function save(){ lsSet(LS, JSON.stringify(snapshot())); clearTimeout(saveTimer); saveTimer = setTimeout(applyLang, 350); }
+
+  async function sha(s){
+    try { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode('aba|'+s)); return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join(''); }
+    catch(e){ let h=5381; for (const ch of 'aba|'+s) h=((h<<5)+h+ch.charCodeAt(0))|0; return 'x'+h; }
+  }
+  async function unlock(){
+    const stored = lsGet(PWK);
+    if (!stored){
+      const p = prompt(T('أنشئ كلمة مرور للوحة التحكم (6 أحرف على الأقل). تُحفظ في هذا المتصفح فقط:','Create an admin passcode (min 6 chars). Stored in this browser only:'));
+      if (!p || p.length < 6) return false;
+      lsSet(PWK, await sha(p)); return true;
+    }
+    const p = prompt(T('كلمة مرور لوحة التحكم:','Admin passcode:'));
+    return !!p && (await sha(p)) === stored;
+  }
+
+  /* ---------- field specs ---------- */
+  const catOpts = categories.filter(c => c.key !== 'all');
+  const SPEC = {
+    courses:  [['title_ar','العنوان (عربي)'],['title_en','Title (English)'],['desc_ar','الوصف (عربي)','area'],['desc_en','Description (English)','area'],['youtubeId','YouTube video ID'],['pdf','PDF link / path']],
+    articles: [['cat','Category','cat'],['date','Date'],['title_ar','العنوان (عربي)'],['title_en','Title (English)'],['desc_ar','وصف مختصر (عربي)'],['desc_en','Short description (English)'],['body_ar','نص المقال (عربي)','area6'],['body_en','Article body (English)','area6']],
+    gallery:  [['title_ar','العنوان (عربي)'],['title_en','Title (English)'],['src','Image URL / path (or choose a small file)','img'],['icon','Icon (Font Awesome, e.g. fa-star)']],
+    services: [['title_ar','العنوان (عربي)'],['title_en','Title (English)'],['desc_ar','الوصف (عربي)','area'],['desc_en','Description (English)','area'],['icon','Icon (Font Awesome)']]
+  };
+  const NEW = {
+    courses: () => ({ id:Date.now(), youtubeId:'', pdf:'', title_ar:'دورة جديدة', desc_ar:'', title_en:'New course', desc_en:'' }),
+    articles: () => ({ id:Date.now(), cat:'basics', date:new Date().toISOString().slice(0,10), title_ar:'مقال جديد', desc_ar:'', body_ar:'', title_en:'New article', desc_en:'', body_en:'' }),
+    gallery: () => ({ id:Date.now(), src:'', icon:'fa-image', title_ar:'عنصر جديد', title_en:'New item' }),
+    services: () => ({ id:'svc'+Date.now(), icon:'fa-briefcase', title_ar:'خدمة جديدة', title_en:'New service', desc_ar:'', desc_en:'' })
+  };
+
+  /* ---------- UI ---------- */
+  let tab = 'settings', ov;
+  const inp = 'class="inp"';
+  const attr = esc;
+  const val = (o,p) => p.split('.').reduce((a,k)=>a==null?'':a[k], o);
+  const field = (label, path, extra='') => `<label class="text-xs block">${label}<input ${inp} data-path="${attr(path)}" value="${attr(val(CONFIG,path)??'')}" ${extra}></label>`;
+
+  function tabSettings(){
+    let h = `<div class="grid sm:grid-cols-2 gap-3">${field(T('رقم واتساب (دولي بدون +)','WhatsApp number (intl, no +)'),'whatsappNumber','dir="ltr"')}${field(T('بريد استقبال الحجوزات والرسائل','Email that receives bookings/messages'),'email','dir="ltr"')}</div>`;
+    h += `<h4 class="font-bold mt-5">${T('بيانات التحويل البنكي','Bank transfer details')}</h4><div class="grid sm:grid-cols-2 gap-3 mt-2">${['holder','bankName','iban','account','swift'].map(k=>field(k,'bank.'+k,'dir="auto"')).join('')}</div>`;
+    h += `<h4 class="font-bold mt-5">${T('المحافظ الإلكترونية','E-wallets')}</h4><div class="grid gap-2 mt-2">${CONFIG.wallets.map((w,i)=>`<div class="grid grid-cols-2 gap-2">${field(T('الاسم','Name'),`wallets.${i}.name`)}${field(T('الرقم','Number'),`wallets.${i}.number`,'dir="ltr"')}</div>`).join('')}</div><button data-addwallet class="btn btn-o !py-1 mt-2 text-sm">+ ${T('محفظة','Wallet')}</button>`;
+    h += `<h4 class="font-bold mt-5">${T('روابط التواصل الاجتماعي','Social links')}</h4><div class="grid sm:grid-cols-2 gap-3 mt-2">${Object.keys(CONFIG.social).map(k=>field(k,'social.'+k,'dir="ltr" placeholder="https://..."')).join('')}</div>`;
+    h += `<h4 class="font-bold mt-5">${T('أسعار الخدمات (اتركها فارغة = تواصل لمعرفة السعر)','Service prices (empty = contact for price)')}</h4><div class="overflow-x-auto"><table class="tbl mt-2 w-full"><tr><th></th><th>SAR</th><th>EGP</th><th>USD</th></tr>${services.map(s=>`<tr><td class="text-start">${attr(s['title_'+lang])}</td>${['SAR','EGP','USD'].map(c=>`<td><input type="number" min="0" data-path="prices.${attr(s.id)}.${c}" value="${attr(val(CONFIG,`prices.${s.id}.${c}`)??'')}" class="inp !w-24"></td>`).join('')}</tr>`).join('')}</table></div>`;
+    return h;
+  }
+  function tabList(name){
+    const items = arrs[name], spec = SPEC[name];
+    let h = `<button data-add="${name}" class="btn btn-p mb-3">+ ${T('إضافة','Add')}</button><div class="grid gap-3">`;
+    items.forEach((it,i)=>{
+      h += `<details class="border rounded-xl bg-white"><summary class="cursor-pointer p-3 font-semibold flex justify-between gap-2"><span>${i+1}. ${attr(it['title_'+lang]||it.title_en||it.title_ar||'')}</span></summary><div class="p-3 grid gap-3 border-t">
+        ${spec.map(f => {
+          const k=f[0], label=f[1], type=f[2], v=attr(it[k]??'');
+          if (type==='area'||type==='area6') return `<label class="text-xs">${label}<textarea ${inp} rows="${type==='area6'?7:3}" data-col="${name}" data-idx="${i}" data-f="${k}">${v}</textarea></label>`;
+          if (type==='cat') return `<label class="text-xs">${label}<select ${inp} data-col="${name}" data-idx="${i}" data-f="${k}">${catOpts.map(c=>`<option value="${c.key}" ${c.key===it[k]?'selected':''}>${c[lang]}</option>`).join('')}</select></label>`;
+          if (type==='img') return `<label class="text-xs">${label}<input ${inp} data-col="${name}" data-idx="${i}" data-f="${k}" value="${it[k] && it[k].startsWith('data:') ? '' : v}" placeholder="${it[k] && it[k].startsWith('data:') ? '(embedded image)' : ''}"><input type="file" accept="image/*" data-colimg="${name}" data-idx="${i}" class="mt-1 text-xs"></label>`;
+          return `<label class="text-xs">${label}<input ${inp} data-col="${name}" data-idx="${i}" data-f="${k}" value="${v}"></label>`;
+        }).join('')}
+        <div class="flex gap-2 flex-wrap"><button data-mv="${name}:${i}:-1" class="btn btn-o !py-1 text-sm">↑</button><button data-mv="${name}:${i}:1" class="btn btn-o !py-1 text-sm">↓</button><button data-del="${name}:${i}" class="btn !py-1 text-sm bg-red-600 text-white">${T('حذف','Delete')}</button></div></div></details>`;
+    });
+    return h + '</div>';
+  }
+  function tabTexts(){
+    return `<p class="text-sm text-slate-600 mb-3">${T('عدّل نصوص الصفحة الرئيسية والعناوين بالعربية والإنجليزية.','Edit homepage texts and headings in Arabic and English.')}</p><div class="grid gap-3">${TXT_KEYS.map(k=>`<div class="grid sm:grid-cols-2 gap-2 border-b pb-3"><label class="text-xs">${k} · AR<textarea ${inp} rows="2" data-tx="ar:${k}">${attr(i18n.ar[k]||'')}</textarea></label><label class="text-xs">${k} · EN<textarea ${inp} rows="2" data-tx="en:${k}">${attr(i18n.en[k]||'')}</textarea></label></div>`).join('')}</div>`;
+  }
+  function tabData(){
+    return `<div class="grid gap-4 max-w-xl"><div class="note">${T('التعديلات تُحفظ كمسودة في هذا المتصفح وتظهر لك مباشرة. لتظهر لكل الزوار: صدّر ملف content.json وضعه بجانب index.html ثم أعد رفع المجلد.','Edits are saved as a draft in this browser and shown live. To show them to all visitors: export content.json, put it next to index.html, and re-upload the folder.')}</div>
+      <button id="adExport" class="btn btn-p"><i class="fa-solid fa-download me-1"></i>${T('تصدير content.json','Export content.json')}</button>
+      <label class="text-sm">${T('استيراد ملف content.json','Import a content.json file')}<input id="adImport" type="file" accept="application/json" class="block mt-1"></label>
+      <button id="adReset" class="btn bg-red-600 text-white">${T('مسح المسودة والعودة للمحتوى المنشور','Discard draft and return to published content')}</button>
+      <button id="adPw" class="btn btn-o">${T('تغيير كلمة المرور','Change passcode')}</button></div>`;
+  }
+
+  function render(){
+    const tabsA = [['settings',T('الإعدادات والدفع','Settings & payments')],['courses',T('الدورات','Courses')],['articles',T('المقالات','Articles')],['gallery',T('المعرض','Gallery')],['services',T('الخدمات','Services')],['texts',T('النصوص','Texts')],['data',T('البيانات والنشر','Data & publish')]];
+    const body = tab==='settings' ? tabSettings() : tab==='texts' ? tabTexts() : tab==='data' ? tabData() : tabList(tab);
+    ov.innerHTML = `<div class="max-w-4xl mx-auto bg-white min-h-full p-4 sm:p-6"><div class="flex items-center justify-between gap-2"><h2 class="text-xl font-extrabold text-brand-900"><i class="fa-solid fa-gear me-2"></i>${T('لوحة التحكم','Admin dashboard')}</h2><button id="adClose" class="btn btn-o !py-1">${T('إغلاق','Close')} ✕</button></div>
+      <div class="flex flex-wrap gap-2 mt-4">${tabsA.map(x=>`<button data-atab="${x[0]}" class="px-3 py-1.5 rounded-full border text-sm font-bold ${x[0]===tab?'tab-on':'bg-white text-slate-600 border-slate-300'}">${x[1]}</button>`).join('')}</div>
+      <div class="mt-5" id="adBody">${body}</div></div>`;
+  }
+  const keepOpen = () => [...ov.querySelectorAll('details')].map(d=>d.open);
+
+  function setPath(path, value){
+    const parts = path.split('.'); let o = CONFIG;
+    for (let i=0;i<parts.length-1;i++){ if (o[parts[i]]==null || typeof o[parts[i]]!=='object') o[parts[i]] = {}; o = o[parts[i]]; }
+    const last = parts[parts.length-1];
+    o[last] = (parts[0]==='prices') ? (value===''?null:Number(value)) : value;
+  }
+  function open(){
+    if (!ov){
+      ov = document.createElement('div'); ov.id = 'adminOverlay';
+      ov.className = 'hidden fixed inset-0 z-[60] overflow-y-auto bg-slate-100';
+      document.body.appendChild(ov);
+      ov.addEventListener('input', e => {
+        const el = e.target;
+        if (el.dataset.path) setPath(el.dataset.path, el.value);
+        else if (el.dataset.col && el.dataset.f) arrs[el.dataset.col][+el.dataset.idx][el.dataset.f] = el.value;
+        else if (el.dataset.tx){ const [l,k] = el.dataset.tx.split(':'); i18n[l][k] = el.value; }
+        else return;
+        save();
+      });
+      ov.addEventListener('change', e => {
+        const el = e.target;
+        if (el.dataset.colimg){
+          const f = el.files[0]; if (!f) return;
+          if (f.size > 400*1024) return alert(T('الصورة كبيرة (الحد 400KB). استخدم رابطاً أو صورة أصغر.','Image too large (max 400KB). Use a URL or a smaller image.'));
+          const r = new FileReader(); r.onload = () => { arrs[el.dataset.colimg][+el.dataset.idx].src = r.result; save(); render(); }; r.readAsDataURL(f);
+        } else if (el.id === 'adImport'){
+          const f = el.files[0]; if (!f) return;
+          const r = new FileReader(); r.onload = () => { try { apply(JSON.parse(r.result)); save(); render(); alert('OK'); } catch(err){ alert('Invalid file'); } }; r.readAsText(f);
+        }
+      });
+      ov.addEventListener('click', e => {
+        const b = e.target.closest('button'); if (!b) return;
+        if (b.id==='adClose'){ ov.classList.add('hidden'); document.body.style.overflow=''; if (location.hash==='#admin') history.replaceState(null,'',location.pathname+location.search); return; }
+        if (b.dataset.atab){ tab = b.dataset.atab; render(); return; }
+        if (b.dataset.add){ arrs[b.dataset.add].push(NEW[b.dataset.add]()); save(); render(); return; }
+        if (b.dataset.addwallet!==undefined){ CONFIG.wallets.push({name:'',number:''}); save(); render(); return; }
+        if (b.dataset.del){ const [n,i] = b.dataset.del.split(':'); if (confirm(T('حذف هذا العنصر؟','Delete this item?'))){ arrs[n].splice(+i,1); save(); render(); } return; }
+        if (b.dataset.mv){ const [n,i,d] = b.dataset.mv.split(':'); const a = arrs[n], from=+i, to=from+(+d); if (to>=0 && to<a.length){ [a[from],a[to]] = [a[to],a[from]]; save(); render(); } return; }
+        if (b.id==='adExport'){ const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(snapshot(),null,2)],{type:'application/json'})); a.download='content.json'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); return; }
+        if (b.id==='adReset'){ if (confirm(T('مسح المسودة؟','Discard the draft?'))){ try{localStorage.removeItem(LS);}catch(e){} location.reload(); } return; }
+        if (b.id==='adPw'){ (async()=>{ const p = prompt(T('كلمة المرور الجديدة (6 أحرف على الأقل):','New passcode (min 6 chars):')); if (p && p.length>=6){ lsSet(PWK, await sha(p)); alert('OK'); } })(); return; }
+      });
+    }
+    render(); ov.classList.remove('hidden'); document.body.style.overflow = 'hidden';
+  }
+  async function tryOpen(){ if (await unlock()) open(); else if (location.hash==='#admin') history.replaceState(null,'',location.pathname+location.search); }
+  $('#adminOpen').onclick = tryOpen;
+  window.addEventListener('hashchange', () => { if (location.hash==='#admin') tryOpen(); });
+
+  // ---- start-up: published content.json, then this browser's draft, then render ----
+  (async function init(){
+    try { const r = await fetch('content.json', {cache:'no-store'}); if (r.ok) apply(await r.json()); } catch(e){}
+    const d = lsGet(LS); if (d) { try { apply(JSON.parse(d)); } catch(e){} }
+    applyLang();
+    if (location.hash === '#admin') tryOpen();
+  })();
+})();
+</script>
+
+</body>
+</html>
