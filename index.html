@@ -164,7 +164,7 @@ tailwind.config = { theme: { extend: { colors: { brand: { 50:'#eff8f7',100:'#d5e
       </div>
       <p id="formStatus" class="text-sm text-brand-100"></p>
     </form>
-    <p class="mt-6 text-sm text-brand-100">✉ <a class="underline" href="mailto:abaabozaid@gmail.com">abaabozaid@gmail.com</a></p>
+    <p class="mt-6 text-sm text-brand-100">✉ <a class="underline" target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&fs=1&to=abaabozaid@gmail.com">abaabozaid@gmail.com</a> <button type="button" data-copyemail class="ms-2 text-xs px-2 py-0.5 rounded border border-white/40 hover:bg-white/10"><i class="fa-regular fa-copy me-1"></i><span data-i18n="co_copy"></span></button></p>
     <div id="socialBar" class="mt-6 flex flex-wrap gap-3"></div>
   </div>
 </section>
@@ -297,7 +297,7 @@ const i18n = {
     f_name:"الاسم", f_email:"البريد الإلكتروني", f_msg:"رسالتك", f_send:"إرسال",
     contact_note:"أوافق على إرسال بياناتي عبر خدمة FormSubmit إلى بريد المنصة لأغراض التواصل فقط.",
     read_more:"اقرأ المقال", watch_soon:"سيُضاف الفيديو قريباً", pdf:"تحميل PDF", pdf_soon:"المرفق قريباً",
-    share:"مشاركة واتساب", sent:"تم إرسال رسالتك. شكراً!", send_fail:"تعذّر الإرسال الآلي؛ سيُفتح تطبيق البريد لإرسالها.",
+    share:"مشاركة واتساب", sent:"تم إرسال رسالتك. شكراً!", send_fail:"تعذّر الإرسال الآلي. أرسلها بإحدى الطريقتين:", open_gmail:"افتح Gmail", send_wa:"أرسل عبر واتساب", co_done2:"تم إرسال الحجز. اضغط الزر لتأكيد الموعد عبر واتساب.",
     footer:"المحتوى توعوي ولا يغني عن التقييم والتشخيص المتخصص.",
     wa_default:"مرحباً أستاذ محمد، أود الاستفسار عن خدمات ABA Praxis",
     wa_ctx:{ home:"مرحباً أستاذ محمد، أود الاستفسار عن خدماتكم.", courses:"مرحباً أستاذ محمد، لدي سؤال عن الدورات المسجلة.", articles:"مرحباً أستاذ محمد، لدي استفسار حول أحد المقالات.", toolkit:"مرحباً أستاذ محمد، أود الاستفسار عن أدوات جمع البيانات.", assessment:"مرحباً أستاذ محمد، أرغب في حجز تقييم VB-MAPP / ABLLS-R وقد اطلعت على الأدوات.", services:"مرحباً أستاذ محمد، أرغب في حجز خدمة مدفوعة وقد اطلعت على تفاصيل التحويل.", contact:"مرحباً أستاذ محمد، أود التواصل معكم." },
@@ -334,7 +334,7 @@ const i18n = {
     f_name:"Name", f_email:"Email", f_msg:"Your message", f_send:"Send",
     contact_note:"I agree to my data being sent through FormSubmit to the platform's email for contact purposes only.",
     read_more:"Read article", watch_soon:"Video coming soon", pdf:"Download PDF", pdf_soon:"Handout coming soon",
-    share:"Share on WhatsApp", sent:"Your message was sent. Thank you!", send_fail:"Automatic sending failed; your mail app will open to send it.",
+    share:"Share on WhatsApp", sent:"Your message was sent. Thank you!", send_fail:"Automatic sending failed. Send it another way:", open_gmail:"Open Gmail", send_wa:"Send via WhatsApp", co_done2:"Booking sent. Tap the button to confirm the appointment on WhatsApp.",
     footer:"Educational content only; it does not replace professional assessment or diagnosis.",
     wa_default:"Hello Mohamed, I'd like to ask about ABA Praxis services",
     wa_ctx:{ home:"Hello Mohamed, I'd like to ask about your services.", courses:"Hello Mohamed, I have a question about the recorded courses.", articles:"Hello Mohamed, I have a question about one of the articles.", toolkit:"Hello Mohamed, I'd like to ask about the data-collection tools.", assessment:"Hello Mohamed, I'd like to book a VB-MAPP / ABLLS-R assessment; I've reviewed the tools.", services:"Hello Mohamed, I'd like to book a paid service and have reviewed the transfer details.", contact:"Hello Mohamed, I'd like to get in touch." },
@@ -696,18 +696,22 @@ function openCheckout(id){
     out.append('_subject','Booking: '+s.title_en); out.append('_captcha','false'); out.append('_template','table');
     lines.forEach(l=>{ const i=l.indexOf(':'); out.append(l.slice(0,i), l.slice(i+1).trim()); });
     if (f) out.append('attachment', f);
-    await deliver(out, lines.join('\n'), 'Booking: '+s.title_en);
-    $('#coMsg').className='text-sm text-green-700'; $('#coMsg').textContent = t('co_done');
-    window.open(waLink(`${t('wa_ctx').services}\n\n${lines.join('\n')}`),'_blank');
+    const sent = await deliver(out, lines.join('\n'), 'Booking: '+s.title_en);
+    const waT = `${t('wa_ctx').services}\n\n${lines.join('\n')}`;
+    $('#coMsg').className = 'text-sm text-green-700';
+    $('#coMsg').innerHTML = (sent ? esc(t('co_done2')) : fbHtml('Booking: '+s.title_en, lines.join('\n'))) + `<br><a class="btn btn-g mt-2" style="color:#fff" target="_blank" rel="noopener" href="${waLink(waT)}"><i class="fa-brands fa-whatsapp me-1"></i>${esc(t('send_wa'))}</a>`;
+
   };
 }
+const gmailLink = (s,b) => `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONFIG.email)}&su=${encodeURIComponent(s)}&body=${encodeURIComponent(b)}`;
+const fbHtml = (s,b) => `${esc(t("send_fail"))} <a class="underline font-bold" target="_blank" rel="noopener" href="${gmailLink(s,b)}">${esc(t("open_gmail"))}</a> · <a class="underline font-bold" target="_blank" rel="noopener" href="${waLink(s+"\n"+b)}">${esc(t("send_wa"))}</a>`;
 async function deliver(formData, plainText, subject){          // FormSubmit (no backend) with mailto fallback
   try {
     const r = await fetch('https://formsubmit.co/ajax/'+CONFIG.email, { method:'POST', body:formData, headers:{Accept:'application/json'} });
     const j = await r.json(); if (r.ok && (j.success===true || j.success==='true')) return true;
     throw new Error('fail');
   } catch(err){
-    location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(plainText)}`;
+    // failure is reported to the caller, which shows Gmail / WhatsApp buttons
     return false;
   }
 }
@@ -761,9 +765,10 @@ $('#contactForm').onsubmit = async e => {
   const name=$('#fName').value, email=$('#fEmail').value, msg=$('#fMsg').value, out=new FormData();
   out.append('_subject','Contact: '+name); out.append('_captcha','false'); out.append('name',name); out.append('email',email); out.append('message',msg);
   const ok = await deliver(out, `${msg}\n\n${name}\n${email}`, 'ABA Praxis - '+name);
-  $('#formStatus').textContent = ok ? t('sent') : t('send_fail');
+  $('#formStatus').innerHTML = ok ? esc(t('sent')) : fbHtml('ABA Praxis - '+name, `${msg}\n\n${name}\n${email}`);
   if (ok) e.target.reset();
 };
+document.addEventListener('click', e => { const b = e.target.closest('[data-copyemail]'); if (!b) return; try { navigator.clipboard.writeText(CONFIG.email).catch(()=>{}); } catch(err){} const sp = b.querySelector('span'); if (sp){ const old = sp.textContent; sp.textContent = t('co_copied'); setTimeout(()=>sp.textContent = old, 1500); } });
 $('#yr').textContent = new Date().getFullYear();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
