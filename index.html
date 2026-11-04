@@ -778,8 +778,12 @@ $('#yr').textContent = new Date().getFullYear();
    ===================================================================== */
 (function(){
   const LS = 'abaDraft', PWK = 'abaAdminPw';
-  const arrs = { courses, articles, gallery, services };
-  const CFG_KEYS = ['email','whatsappNumber','prices','bank','wallets','social'];
+  const arrs = { courses, articles, gallery, services, categories };
+  const CFG_KEYS = ['email','whatsappNumber','prices','bank','wallets','social','sections'];
+  CONFIG.sections = CONFIG.sections || {};
+  const GHD = { owner:'abaabozaid-coder', repo:'aba-apraxis-m-abozaid', branch:'main' };
+  const gh = () => { try { return Object.assign({}, GHD, JSON.parse(lsGet('abaGh') || '{}')); } catch(e){ return Object.assign({}, GHD); } };
+  const SECTIONS = [['courses','الدورات','Courses'],['articles','المقالات','Articles'],['toolkit','الأدوات والمعرض','Toolkit & gallery'],['assessment','ركن التقييم','Assessment suite'],['services','الخدمات المدفوعة','Paid services'],['contact','التواصل','Contact']];
   const TXT_KEYS = ['hero_kicker','hero_title','hero_role','hero_desc','hero_cta1','hero_cta2','hero_cta3','pill1','pill2','pill3','pill4','courses_h','courses_sub','articles_h','articles_sub','toolkit_h','toolkit_sub','assess_h','assess_sub','assess_disclaimer','services_h','services_sub','contact_h','contact_sub','footer'];
   const clone = o => JSON.parse(JSON.stringify(o));
   const lsGet = k => { try { return localStorage.getItem(k); } catch(e){ return null; } };
@@ -818,22 +822,54 @@ $('#yr').textContent = new Date().getFullYear();
   }
 
   /* ---------- field specs ---------- */
-  const catOpts = categories.filter(c => c.key !== 'all');
+  const catOpts = () => categories.filter(c => c.key !== 'all');
   const SPEC = {
+    categories: [['key','Key (latin letters, no spaces)'],['ar','الاسم (عربي)'],['en','Name (English)']],
     courses:  [['title_ar','العنوان (عربي)'],['title_en','Title (English)'],['desc_ar','الوصف (عربي)','area'],['desc_en','Description (English)','area'],['youtubeId','YouTube video ID'],['pdf','PDF link / path']],
     articles: [['cat','Category','cat'],['date','Date'],['title_ar','العنوان (عربي)'],['title_en','Title (English)'],['desc_ar','وصف مختصر (عربي)'],['desc_en','Short description (English)'],['body_ar','نص المقال (عربي)','area6'],['body_en','Article body (English)','area6']],
     gallery:  [['title_ar','العنوان (عربي)'],['title_en','Title (English)'],['src','Image URL / path (or choose a small file)','img'],['icon','Icon (Font Awesome, e.g. fa-star)']],
     services: [['title_ar','العنوان (عربي)'],['title_en','Title (English)'],['desc_ar','الوصف (عربي)','area'],['desc_en','Description (English)','area'],['icon','Icon (Font Awesome)']]
   };
   const NEW = {
+    categories: () => ({ key:'cat'+Date.now(), ar:'تصنيف جديد', en:'New category' }),
     courses: () => ({ id:Date.now(), youtubeId:'', pdf:'', title_ar:'دورة جديدة', desc_ar:'', title_en:'New course', desc_en:'' }),
     articles: () => ({ id:Date.now(), cat:'basics', date:new Date().toISOString().slice(0,10), title_ar:'مقال جديد', desc_ar:'', body_ar:'', title_en:'New article', desc_en:'', body_en:'' }),
     gallery: () => ({ id:Date.now(), src:'', icon:'fa-image', title_ar:'عنصر جديد', title_en:'New item' }),
     services: () => ({ id:'svc'+Date.now(), icon:'fa-briefcase', title_ar:'خدمة جديدة', title_en:'New service', desc_ar:'', desc_en:'' })
   };
 
+  /* ---------- show / hide sections ---------- */
+  function applySections(){
+    SECTIONS.forEach(s => {
+      const hide = CONFIG.sections[s[0]] === false;
+      const sec = document.getElementById(s[0]); if (sec) sec.classList.toggle('hidden', hide);
+      $$('a[href="#'+s[0]+'"]').forEach(a => a.classList.toggle('hidden', hide));
+    });
+  }
+  const _origApply = applyLang;
+  applyLang = function(){ _origApply(); applySections(); };
+
+  /* ---------- one-click publish to GitHub (content.json) ---------- */
+  async function publish(){
+    const g = gh(), msg = ov && ov.querySelector('#adGhMsg');
+    const say = (t, ok) => { if (msg){ msg.textContent = t; msg.className = 'text-sm ' + (ok ? 'text-green-700' : 'text-red-600'); } };
+    if (!g.token){ say(T('أدخل الـ Token أولاً (تبويب «البيانات والنشر»).','Enter your token first (Data & publish tab).'), false); tab = 'data'; render(); return; }
+    const api = `https://api.github.com/repos/${g.owner}/${g.repo}/contents/content.json`;
+    const hdr = { Authorization:'Bearer '+g.token, Accept:'application/vnd.github+json' };
+    say(T('جارٍ النشر...','Publishing...'), true);
+    try {
+      let sha; const r = await fetch(api + '?ref=' + encodeURIComponent(g.branch), { headers:hdr });
+      if (r.ok) sha = (await r.json()).sha; else if (r.status !== 404) throw new Error('GitHub ' + r.status);
+      const body = { message:'Update content from admin panel', branch:g.branch, content: btoa(unescape(encodeURIComponent(JSON.stringify(snapshot(), null, 2)))) };
+      if (sha) body.sha = sha;
+      const p = await fetch(api, { method:'PUT', headers:Object.assign({'Content-Type':'application/json'}, hdr), body:JSON.stringify(body) });
+      if (!p.ok) throw new Error('GitHub ' + p.status + ' ' + ((await p.json().catch(()=>({}))).message || ''));
+      say(T('تم النشر. تظهر التعديلات للزوار خلال دقيقة أو دقيقتين.','Published. Visitors will see the changes in a minute or two.'), true);
+    } catch(err){ say(T('فشل النشر: ','Publish failed: ') + err.message, false); }
+  }
+
   /* ---------- UI ---------- */
-  let tab = 'settings', ov;
+  let tab = 'overview', ov;
   const inp = 'class="inp"';
   const attr = esc;
   const val = (o,p) => p.split('.').reduce((a,k)=>a==null?'':a[k], o);
@@ -851,23 +887,47 @@ $('#yr').textContent = new Date().getFullYear();
     const items = arrs[name], spec = SPEC[name];
     let h = `<button data-add="${name}" class="btn btn-p mb-3">+ ${T('إضافة','Add')}</button><div class="grid gap-3">`;
     items.forEach((it,i)=>{
-      h += `<details class="border rounded-xl bg-white"><summary class="cursor-pointer p-3 font-semibold flex justify-between gap-2"><span>${i+1}. ${attr(it['title_'+lang]||it.title_en||it.title_ar||'')}</span></summary><div class="p-3 grid gap-3 border-t">
+      h += `<details class="border rounded-xl bg-white"><summary class="cursor-pointer p-3 font-semibold flex justify-between gap-2"><span>${i+1}. ${attr(it['title_'+lang]||it.title_en||it.title_ar||it[lang]||it.key||'')}</span></summary><div class="p-3 grid gap-3 border-t">
         ${spec.map(f => {
           const k=f[0], label=f[1], type=f[2], v=attr(it[k]??'');
           if (type==='area'||type==='area6') return `<label class="text-xs">${label}<textarea ${inp} rows="${type==='area6'?7:3}" data-col="${name}" data-idx="${i}" data-f="${k}">${v}</textarea></label>`;
-          if (type==='cat') return `<label class="text-xs">${label}<select ${inp} data-col="${name}" data-idx="${i}" data-f="${k}">${catOpts.map(c=>`<option value="${c.key}" ${c.key===it[k]?'selected':''}>${c[lang]}</option>`).join('')}</select></label>`;
+          if (type==='cat') return `<label class="text-xs">${label}<select ${inp} data-col="${name}" data-idx="${i}" data-f="${k}">${catOpts().map(c=>`<option value="${c.key}" ${c.key===it[k]?'selected':''}>${c[lang]}</option>`).join('')}</select></label>`;
           if (type==='img') return `<label class="text-xs">${label}<input ${inp} data-col="${name}" data-idx="${i}" data-f="${k}" value="${it[k] && it[k].startsWith('data:') ? '' : v}" placeholder="${it[k] && it[k].startsWith('data:') ? '(embedded image)' : ''}"><input type="file" accept="image/*" data-colimg="${name}" data-idx="${i}" class="mt-1 text-xs"></label>`;
           return `<label class="text-xs">${label}<input ${inp} data-col="${name}" data-idx="${i}" data-f="${k}" value="${v}"></label>`;
         }).join('')}
-        <div class="flex gap-2 flex-wrap"><button data-mv="${name}:${i}:-1" class="btn btn-o !py-1 text-sm">↑</button><button data-mv="${name}:${i}:1" class="btn btn-o !py-1 text-sm">↓</button><button data-del="${name}:${i}" class="btn !py-1 text-sm bg-red-600 text-white">${T('حذف','Delete')}</button></div></div></details>`;
+        <div class="flex gap-2 flex-wrap"><button data-mv="${name}:${i}:-1" class="btn btn-o !py-1 text-sm">↑</button><button data-mv="${name}:${i}:1" class="btn btn-o !py-1 text-sm">↓</button>${it.key==='all' ? '' : `<button data-del="${name}:${i}" class="btn !py-1 text-sm bg-red-600 text-white">${T('حذف','Delete')}</button>`}</div></div></details>`;
     });
     return h + '</div>';
+  }
+  function tabOverview(){
+    const g = gh(), prices = Object.values(CONFIG.prices||{}).some(p => Object.values(p||{}).some(v => v));
+    const todo = [
+      [!CONFIG.bank.iban && !CONFIG.bank.account, T('أضف بيانات التحويل البنكي','Add bank transfer details'), 'settings'],
+      [!(CONFIG.wallets||[]).some(w => w.number), T('أضف أرقام المحافظ الإلكترونية','Add e-wallet numbers'), 'settings'],
+      [!prices, T('أضف أسعار الخدمات','Add service prices'), 'settings'],
+      [!Object.values(CONFIG.social||{}).some(Boolean), T('أضف روابط التواصل الاجتماعي','Add social links'), 'settings'],
+      [courses.some(c => !c.youtubeId), T('أضف معرّفات فيديو يوتيوب للدورات ('+courses.filter(c=>!c.youtubeId).length+')','Add YouTube IDs to courses ('+courses.filter(c=>!c.youtubeId).length+')'), 'courses'],
+      [!g.token, T('اضبط النشر المباشر على GitHub','Set up direct GitHub publishing'), 'data']
+    ];
+    const cards = [[T('الدورات','Courses'),courses.length],[T('المقالات','Articles'),articles.length],[T('المعرض','Gallery'),gallery.length],[T('الخدمات','Services'),services.length],[T('التصنيفات','Categories'),categories.length-1]];
+    return `<div class="grid grid-cols-2 sm:grid-cols-5 gap-3">${cards.map(c=>`<div class="p-3 rounded-xl bg-white border text-center"><div class="text-2xl font-extrabold text-brand-700">${c[1]}</div><div class="text-xs text-slate-600">${c[0]}</div></div>`).join('')}</div>
+      <h4 class="font-bold mt-6">${T('قائمة ما ينقص','To-do checklist')}</h4>
+      <div class="grid gap-2 mt-2">${todo.map(x=>`<button data-atab="${x[2]}" class="text-start p-3 rounded-xl border ${x[0]?'bg-orange-50 border-orange-200':'bg-green-50 border-green-200'}">${x[0]?'⚠':'✔'} ${x[1]}</button>`).join('')}</div>
+      <div class="mt-6 flex flex-wrap gap-2"><button id="adPublish2" class="btn btn-g"><i class="fa-brands fa-github me-1"></i>${T('نشر التعديلات الآن','Publish changes now')}</button></div><p id="adGhMsg" class="text-sm mt-2"></p>`;
+  }
+  function tabSections(){
+    return `<p class="text-sm text-slate-600 mb-3">${T('أخفِ أو أظهر أقسام الموقع. القسم المخفي يختفي هو ورابطه من القائمة.','Show or hide site sections. A hidden section disappears along with its menu link.')}</p><div class="grid gap-2">${SECTIONS.map(s=>`<label class="flex items-center gap-3 p-3 rounded-xl border bg-white"><input type="checkbox" data-sec="${s[0]}" ${CONFIG.sections[s[0]]!==false?'checked':''}><span>${lang==='ar'?s[1]:s[2]}</span></label>`).join('')}</div>`;
   }
   function tabTexts(){
     return `<p class="text-sm text-slate-600 mb-3">${T('عدّل نصوص الصفحة الرئيسية والعناوين بالعربية والإنجليزية.','Edit homepage texts and headings in Arabic and English.')}</p><div class="grid gap-3">${TXT_KEYS.map(k=>`<div class="grid sm:grid-cols-2 gap-2 border-b pb-3"><label class="text-xs">${k} · AR<textarea ${inp} rows="2" data-tx="ar:${k}">${attr(i18n.ar[k]||'')}</textarea></label><label class="text-xs">${k} · EN<textarea ${inp} rows="2" data-tx="en:${k}">${attr(i18n.en[k]||'')}</textarea></label></div>`).join('')}</div>`;
   }
   function tabData(){
     return `<div class="grid gap-4 max-w-xl"><div class="note">${T('التعديلات تُحفظ كمسودة في هذا المتصفح وتظهر لك مباشرة. لتظهر لكل الزوار: صدّر ملف content.json وضعه بجانب index.html ثم أعد رفع المجلد.','Edits are saved as a draft in this browser and shown live. To show them to all visitors: export content.json, put it next to index.html, and re-upload the folder.')}</div>
+      <div class="p-4 rounded-xl border bg-white grid gap-2"><b>${T('النشر المباشر على GitHub (بدون رفع يدوي)','Direct publish to GitHub (no manual upload)')}</b>
+        <div class="grid grid-cols-3 gap-2">${['owner','repo','branch'].map(k=>`<label class="text-xs">${k}<input ${inp} data-gh="${k}" value="${attr(gh()[k]||'')}" dir="ltr"></label>`).join('')}</div>
+        <label class="text-xs">Token<input type="password" ${inp} data-gh="token" value="${attr(gh().token||'')}" dir="ltr" autocomplete="off"></label>
+        <p class="text-xs text-slate-600">${T('أنشئ Token محدود: GitHub ← Settings ← Developer settings ← Personal access tokens ← Fine-grained tokens ← Generate. اختر هذا المستودع فقط، وصلاحية Contents: Read and write. يُحفظ في هذا المتصفح فقط؛ احذفه إن كان الجهاز مشتركاً.','Create a limited token: GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate. Select this repository only, with Contents: Read and write. Stored in this browser only; delete it on a shared computer.')}</p>
+        <div><button id="adPublish2" class="btn btn-g"><i class="fa-brands fa-github me-1"></i>${T('نشر الآن','Publish now')}</button></div><p id="adGhMsg" class="text-sm"></p></div>
       <button id="adExport" class="btn btn-p"><i class="fa-solid fa-download me-1"></i>${T('تصدير content.json','Export content.json')}</button>
       <label class="text-sm">${T('استيراد ملف content.json','Import a content.json file')}<input id="adImport" type="file" accept="application/json" class="block mt-1"></label>
       <button id="adReset" class="btn bg-red-600 text-white">${T('مسح المسودة والعودة للمحتوى المنشور','Discard draft and return to published content')}</button>
@@ -875,9 +935,9 @@ $('#yr').textContent = new Date().getFullYear();
   }
 
   function render(){
-    const tabsA = [['settings',T('الإعدادات والدفع','Settings & payments')],['courses',T('الدورات','Courses')],['articles',T('المقالات','Articles')],['gallery',T('المعرض','Gallery')],['services',T('الخدمات','Services')],['texts',T('النصوص','Texts')],['data',T('البيانات والنشر','Data & publish')]];
-    const body = tab==='settings' ? tabSettings() : tab==='texts' ? tabTexts() : tab==='data' ? tabData() : tabList(tab);
-    ov.innerHTML = `<div class="max-w-4xl mx-auto bg-white min-h-full p-4 sm:p-6"><div class="flex items-center justify-between gap-2"><h2 class="text-xl font-extrabold text-brand-900"><i class="fa-solid fa-gear me-2"></i>${T('لوحة التحكم','Admin dashboard')}</h2><button id="adClose" class="btn btn-o !py-1">${T('إغلاق','Close')} ✕</button></div>
+    const tabsA = [['overview',T('نظرة عامة','Overview')],['settings',T('الإعدادات والدفع','Settings & payments')],['courses',T('الدورات','Courses')],['articles',T('المقالات','Articles')],['categories',T('التصنيفات','Categories')],['gallery',T('المعرض','Gallery')],['services',T('الخدمات','Services')],['sections',T('الأقسام','Sections')],['texts',T('النصوص','Texts')],['data',T('البيانات والنشر','Data & publish')]];
+    const body = tab==='overview' ? tabOverview() : tab==='settings' ? tabSettings() : tab==='sections' ? tabSections() : tab==='texts' ? tabTexts() : tab==='data' ? tabData() : tabList(tab);
+    ov.innerHTML = `<div class="max-w-4xl mx-auto bg-white min-h-full p-4 sm:p-6"><div class="flex items-center justify-between gap-2"><h2 class="text-xl font-extrabold text-brand-900"><i class="fa-solid fa-gear me-2"></i>${T('لوحة التحكم','Admin dashboard')}</h2><div class="flex gap-2"><button id="adPublish" class="btn btn-g !py-1"><i class="fa-brands fa-github me-1"></i>${T('نشر','Publish')}</button><button id="adClose" class="btn btn-o !py-1">${T('إغلاق','Close')} ✕</button></div></div>
       <div class="flex flex-wrap gap-2 mt-4">${tabsA.map(x=>`<button data-atab="${x[0]}" class="px-3 py-1.5 rounded-full border text-sm font-bold ${x[0]===tab?'tab-on':'bg-white text-slate-600 border-slate-300'}">${x[1]}</button>`).join('')}</div>
       <div class="mt-5" id="adBody">${body}</div></div>`;
   }
@@ -896,6 +956,7 @@ $('#yr').textContent = new Date().getFullYear();
       document.body.appendChild(ov);
       ov.addEventListener('input', e => {
         const el = e.target;
+        if (el.dataset.gh){ const g = JSON.parse(lsGet('abaGh') || '{}'); g[el.dataset.gh] = el.value.trim(); lsSet('abaGh', JSON.stringify(g)); return; }
         if (el.dataset.path) setPath(el.dataset.path, el.value);
         else if (el.dataset.col && el.dataset.f) arrs[el.dataset.col][+el.dataset.idx][el.dataset.f] = el.value;
         else if (el.dataset.tx){ const [l,k] = el.dataset.tx.split(':'); i18n[l][k] = el.value; }
@@ -904,6 +965,7 @@ $('#yr').textContent = new Date().getFullYear();
       });
       ov.addEventListener('change', e => {
         const el = e.target;
+        if (el.dataset.sec){ CONFIG.sections[el.dataset.sec] = el.checked; save(); return; }
         if (el.dataset.colimg){
           const f = el.files[0]; if (!f) return;
           if (f.size > 400*1024) return alert(T('الصورة كبيرة (الحد 400KB). استخدم رابطاً أو صورة أصغر.','Image too large (max 400KB). Use a URL or a smaller image.'));
@@ -921,6 +983,7 @@ $('#yr').textContent = new Date().getFullYear();
         if (b.dataset.addwallet!==undefined){ CONFIG.wallets.push({name:'',number:''}); save(); render(); return; }
         if (b.dataset.del){ const [n,i] = b.dataset.del.split(':'); if (confirm(T('حذف هذا العنصر؟','Delete this item?'))){ arrs[n].splice(+i,1); save(); render(); } return; }
         if (b.dataset.mv){ const [n,i,d] = b.dataset.mv.split(':'); const a = arrs[n], from=+i, to=from+(+d); if (to>=0 && to<a.length){ [a[from],a[to]] = [a[to],a[from]]; save(); render(); } return; }
+        if (b.id==='adPublish' || b.id==='adPublish2'){ publish(); return; }
         if (b.id==='adExport'){ const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(snapshot(),null,2)],{type:'application/json'})); a.download='content.json'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); return; }
         if (b.id==='adReset'){ if (confirm(T('مسح المسودة؟','Discard the draft?'))){ try{localStorage.removeItem(LS);}catch(e){} location.reload(); } return; }
         if (b.id==='adPw'){ (async()=>{ const p = prompt(T('كلمة المرور الجديدة (6 أحرف على الأقل):','New passcode (min 6 chars):')); if (p && p.length>=6){ lsSet(PWK, await sha(p)); alert('OK'); } })(); return; }
